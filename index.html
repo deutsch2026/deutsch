@@ -305,6 +305,101 @@ const UNITS = [
     ]
   }
   ]
+},
+{
+  id:"L3",
+  title:"Lektion 3. Wie geht's?",
+  goals:[
+    "서로의 안부를 묻고 답할 수 있다.",
+    "출신지와 거주지를 묻고 답할 수 있다."
+  ],
+  grammar:[
+    ["Woher","kommst","du?"],
+    ["Kommst","du","aus Deutschland?"],
+    ["Ich","komme","aus Korea."]
+  ],
+  conj:{
+    heads:["","kommen","wohnen","heißen"],
+    rows:[
+      ["ich","komme","wohne","heiße"],
+      ["du","kommst","wohnst","heißt"],
+      ["Sie","kommen","wohnen","heißen"]
+    ]
+  },
+  sections:[
+  {
+    name:"A. 안부 묻기 (du)",
+    items:[
+      { de:"Hallo, Peter!", ipa:"[ˈhaloː ˈpeːtɐ]", ko:"안녕, 페터!", tip:"Peter의 e는 길게, 끝의 -er는 약한 '어'. '페－터'." },
+      { de:"Hallo, Anne! Wie geht's?", ipa:"[ˈhaloː ˈanə viː ɡeːts]", ko:"안녕, 안네! 잘 지내?", tip:"geht's는 geht es를 줄인 말이라 '게츠'로 한 덩어리처럼 읽습니다." },
+      { de:"Wie geht es dir?", ipa:"[viː ɡeːt əs diːɐ̯]", ko:"잘 지내?", tip:"w는 [v]. dir의 r은 굴리지 말고 약한 '어'로. '디어'." },
+      { de:"Danke, gut. Und dir?", ipa:"[ˈdaŋkə ɡuːt ʊnt diːɐ̯]", ko:"고마워, 잘 지내. 너는?", tip:"Danke의 a는 짧게, gut의 u는 길게. 끝은 올려 물어보세요." },
+      { de:"Danke, gut. Und wie geht es dir?", ipa:"[ˈdaŋkə ɡuːt ʊnt viː ɡeːt əs diːɐ̯]", ko:"고마워, 잘 지내. 너는 어떻게 지내?", tip:"긴 문장이니 Danke, gut 다음에 한 번 쉬어 갑니다." },
+      { de:"Danke, auch gut.", ipa:"[ˈdaŋkə aʊ̯x ɡuːt]", ko:"고마워, 나도 잘 지내.", tip:"auch의 ch는 목 안쪽에서 긁는 소리. '아우흐'." }
+    ]
+  },
+  {
+    name:"B. 기분 말하기",
+    items:[
+      { de:"super", ipa:"[ˈzuːpɐ]", ko:"아주 좋아", tip:"첫 s는 [z]로 울립니다. '수퍼'가 아니라 '주－퍼'." },
+      { de:"sehr gut", ipa:"[zeːɐ̯ ɡuːt]", ko:"아주 좋아", tip:"sehr의 h는 소리 없이 e를 길게. '제어 구트'." },
+      { de:"gut", ipa:"[ɡuːt]", ko:"좋아", tip:"u를 길게 끌고 끝의 t를 분명히 냅니다." },
+      { de:"es geht", ipa:"[ɛs ɡeːt]", ko:"그럭저럭이야", tip:"두 단어를 붙여 '에스게트'처럼 이어 읽습니다." },
+      { de:"nicht so gut", ipa:"[nɪçt zoː ɡuːt]", ko:"별로 좋지 않아", tip:"nicht의 ch는 ich처럼 혀 앞쪽 바람 소리. so의 s는 [z]." }
+    ]
+  },
+  {
+    name:"C. 안부 묻기 (Sie)",
+    items:[
+      { de:"Guten Tag, Frau Bolten!", ipa:"[ˌɡuːtn̩ ˈtaːk fʁaʊ̯ ˈbɔltn̩]", ko:"안녕하세요, 볼텐 씨!", tip:"Frau의 au는 '아우'. r은 목젖에서 냅니다." },
+      { de:"Wie geht es Ihnen?", ipa:"[viː ɡeːt əs ˈiːnən]", ko:"어떻게 지내세요?", tip:"Ihnen의 h는 소리 없이 i를 길게. '이－넨'. 존댓말 표현입니다." },
+      { de:"Danke, sehr gut. Und Ihnen?", ipa:"[ˈdaŋkə zeːɐ̯ ɡuːt ʊnt ˈiːnən]", ko:"고맙습니다, 아주 좋아요. 당신은요?", tip:"Und Ihnen 끝을 올려 물어봅니다." },
+      { de:"Guten Tag, Herr Tillmann. Wie geht es Ihnen?", ipa:"[ˌɡuːtn̩ ˈtaːk hɛʁ ˈtɪlman viː ɡeːt əs ˈiːnən]", ko:"안녕하세요, 틸만 씨. 어떻게 지내세요?", tip:"Herr의 r은 목젖에서. 이름 뒤에 한 번 쉬고 질문을 이어 갑니다." }
+    ]
+  },
+  {
+    name:"D. 나라와 도시",
+    items:[
+      { de:"Deutschland", ipa:"[ˈdɔɪ̯tʃlant]", ko:"독일", tip:"eu는 '오이', tsch는 [츄]. 끝 d는 [t]. '도이츄란트'." },
+      { de:"Österreich", ipa:"[ˈøːstɐʁaɪ̯ç]", ko:"오스트리아", tip:"ö는 '에' 입 모양에서 입술만 오므려서. 끝의 ch는 ich의 ch와 같습니다." },
+      { de:"die Schweiz", ipa:"[diː ʃvaɪ̯ts]", ko:"스위스", tip:"sch는 [슈], w는 [v], z는 [ts]. '디 슈바이츠'." },
+      { de:"Frankreich", ipa:"[ˈfʁaŋkʁaɪ̯ç]", ko:"프랑스", tip:"r이 두 번 나옵니다. 둘 다 목젖에서 내세요." },
+      { de:"England", ipa:"[ˈɛŋlant]", ko:"영국", tip:"영어처럼 '잉글랜드'가 아니라 '엥란트'. 끝 d는 [t]." },
+      { de:"Italien", ipa:"[iˈtaːli̯ən]", ko:"이탈리아", tip:"두 번째 음절에 힘을 줍니다. 이-탈-리엔." },
+      { de:"Japan", ipa:"[ˈjaːpan]", ko:"일본", tip:"독일어 j는 [y] 소리입니다. '자판'이 아니라 '야－판'." },
+      { de:"China", ipa:"[ˈçiːna]", ko:"중국", tip:"ch로 시작합니다. '차이나'가 아니라 ich의 ch로 시작하는 '히－나'." },
+      { de:"Berlin", ipa:"[bɛɐ̯ˈliːn]", ko:"베를린", tip:"뒤 음절에 힘을 줍니다. 베어-린－." },
+      { de:"Wien", ipa:"[viːn]", ko:"빈 (오스트리아 수도)", tip:"W는 [v], ie는 긴 '이－'. '비－ㄴ'." }
+    ]
+  },
+  {
+    name:"E. 출신지와 거주지",
+    items:[
+      { de:"Woher kommst du?", ipa:"[voˈheːɐ̯ kɔmst duː]", ko:"어디에서 왔어?", tip:"Woher는 뒤 음절에 힘을 줍니다. '보헤어'." },
+      { de:"Ich komme aus Korea.", ipa:"[ɪç ˈkɔmə aʊ̯s koˈʁeːa]", ko:"나는 한국에서 왔어.", tip:"Korea는 두 번째 음절에 힘을 줍니다. 코-레－아." },
+      { de:"Wo wohnst du?", ipa:"[voː voːnst duː]", ko:"어디에 살아?", tip:"w가 두 번. 둘 다 [v]입니다. '보 본스트 두'." },
+      { de:"Ich wohne in Seoul.", ipa:"[ɪç ˈvoːnə ɪn zeˈʊl]", ko:"나는 서울에 살아.", tip:"wohne의 h는 소리 없이 o를 길게 늘입니다." },
+      { de:"Kommst du aus Deutschland?", ipa:"[kɔmst duː aʊ̯s ˈdɔɪ̯tʃlant]", ko:"너 독일에서 왔어?", tip:"동사로 시작하는 의문문입니다. 끝을 확실히 올려 주세요." },
+      { de:"Nein, ich komme aus Österreich.", ipa:"[naɪ̯n ɪç ˈkɔmə aʊ̯s ˈøːstɐʁaɪ̯ç]", ko:"아니, 나는 오스트리아에서 왔어.", tip:"Nein 다음에 살짝 쉬고 이어 읽습니다." },
+      { de:"Ich komme aus der Schweiz.", ipa:"[ɪç ˈkɔmə aʊ̯s deːɐ̯ ʃvaɪ̯ts]", ko:"나는 스위스에서 왔어.", tip:"스위스만 aus der를 씁니다. 다른 나라는 aus만 붙입니다." },
+      { de:"Woher kommen Sie?", ipa:"[voˈheːɐ̯ ˈkɔmən ziː]", ko:"어디에서 오셨어요?", tip:"존댓말 형태입니다. Sie의 s는 [z]. '지－'." },
+      { de:"Wo wohnen Sie?", ipa:"[voː ˈvoːnən ziː]", ko:"어디에 사세요?", tip:"wohnen의 끝 -en은 약하게 흘립니다. '보넨'." }
+    ]
+  },
+  {
+    name:"F. 자기소개",
+    items:[
+      { de:"Hallo, ich heiße Suyon.", ipa:"[ˈhaloː ɪç ˈhaɪ̯sə]", ko:"안녕, 나는 수연이야.", tip:"ich의 ch는 혀 앞쪽 바람 소리. heiße의 ß는 [s] 하나." },
+      { de:"Ich komme aus Seoul, Korea.", ipa:"[ɪç ˈkɔmə aʊ̯s zeˈʊl koˈʁeːa]", ko:"나는 한국 서울에서 왔어.", tip:"도시를 먼저, 나라를 뒤에 말합니다. 쉼표에서 한 번 쉬세요." },
+      { de:"Ich komme aus Deutschland, aus Frankfurt.", ipa:"[ɪç ˈkɔmə aʊ̯s ˈdɔɪ̯tʃlant aʊ̯s ˈfʁaŋkfʊʁt]", ko:"나는 독일 프랑크푸르트에서 왔어.", tip:"Frankfurt에 r이 두 번. 둘 다 목젖에서 냅니다." },
+      { de:"Wohnst du in Frankfurt?", ipa:"[voːnst duː ɪn ˈfʁaŋkfʊʁt]", ko:"프랑크푸르트에 살아?", tip:"끝을 올려 물어봅니다. wohnst의 st는 [스트]로 또렷하게." },
+      { de:"Nein, ich wohne in Hamburg.", ipa:"[naɪ̯n ɪç ˈvoːnə ɪn ˈhambʊʁk]", ko:"아니, 나는 함부르크에 살아.", tip:"Hamburg 끝의 g는 [k]. '함부르크'." },
+      { de:"Bist du Student?", ipa:"[bɪst duː ʃtuˈdɛnt]", ko:"너 대학생이야?", tip:"St-로 시작하면 [슈트]. '스투덴트'가 아니라 '슈투덴트'." },
+      { de:"Nein, ich bin Schüler.", ipa:"[naɪ̯n ɪç bɪn ˈʃyːlɐ]", ko:"아니, 나는 학생이야.", tip:"sch는 [슈], ü는 입술을 오므린 '이'. '슐러'." },
+      { de:"Ach so!", ipa:"[ax ˈzoː]", ko:"아, 그렇구나!", tip:"Ach의 ch는 목 안쪽 소리, so의 s는 [z]. 맞장구칠 때 씁니다." }
+    ]
+  }
+  ]
 }
 ];
 
@@ -420,6 +515,15 @@ function drawInfo(){
     h+="<b>문장 구조</b><table class='gram'><tr><th>Position 1</th><th>Position 2</th><th></th></tr>";
     u.grammar.forEach(r=>{
       h+="<tr><td class='de'>"+esc(r[0])+"</td><td class='de v'>"+esc(r[1])+"</td><td class='de'>"+esc(r[2])+"</td></tr>";
+    });
+    h+="</table>";
+  }
+  if(u.conj){
+    h+="<b style='display:inline-block;margin-top:12px'>동사의 어미 변화</b><table class='gram'><tr>"+
+       u.conj.heads.map(x=>"<th class='de'>"+esc(x)+"</th>").join("")+"</tr>";
+    u.conj.rows.forEach(r=>{
+      h+="<tr><td class='de'><b>"+esc(r[0])+"</b></td>"+
+         r.slice(1).map(x=>"<td class='de v'>"+esc(x)+"</td>").join("")+"</tr>";
     });
     h+="</table>";
   }
@@ -560,29 +664,40 @@ function b64dec(b64){
   return new TextDecoder().decode(bytes);
 }
 function makeCode(){
-  const s=store();
-  const rows=Object.keys(s).map(k=>{
-    const p=k.split("-");
-    return [ +p[0], +p[1], s[k].b, s[k].t ];
+  const all=[];
+  UNITS.forEach(u=>{
+    const s=rec[u.id];
+    if(!s) return;
+    const rows=Object.keys(s).map(k=>{
+      const p=k.split("-");
+      return [ +p[0], +p[1], s[k].b, s[k].t ];
+    });
+    if(rows.length) all.push([u.id, rows]);
   });
-  if(!rows.length){
+  if(!all.length){
     $("codeOut").value="아직 연습 기록이 없습니다. 문장을 하나 이상 따라 말한 뒤에 눌러 주세요.";
     return;
   }
   const d=new Date();
   const day=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-  const payload={ n:student, u:unit().id, d:day, s:rows };
-  $("codeOut").value="DE1."+b64enc(JSON.stringify(payload));
+  $("codeOut").value="DE2."+b64enc(JSON.stringify({ n:student, d:day, r:all }));
 }
 function parseCode(line){
   const t=line.trim();
   if(!t) return null;
-  if(t.indexOf("DE1.")!==0) return { bad:true };
   try{
-    const o=JSON.parse(b64dec(t.slice(4)));
-    if(!o || !Array.isArray(o.s)) return { bad:true };
-    return o;
+    if(t.indexOf("DE2.")===0){
+      const o=JSON.parse(b64dec(t.slice(4)));
+      if(!o || !Array.isArray(o.r)) return { bad:true };
+      return { n:o.n, d:o.d, units:o.r.map(x=>({ u:x[0], s:x[1] })) };
+    }
+    if(t.indexOf("DE1.")===0){          // 2과만 있던 예전 코드도 읽습니다.
+      const o=JSON.parse(b64dec(t.slice(4)));
+      if(!o || !Array.isArray(o.s)) return { bad:true };
+      return { n:o.n, d:o.d, units:[{ u:o.u, s:o.s }] };
+    }
   }catch(e){ return { bad:true }; }
+  return { bad:true };
 }
 
 /* ================= 교사용 채점표 ================= */
@@ -591,27 +706,31 @@ function buildTable(){
   const parsed=$("codeIn").value.split("\n").map(parseCode).filter(Boolean);
   const ok=parsed.filter(p=>!p.bad), bad=parsed.filter(p=>p.bad);
   if(!ok.length){
-    $("tableOut").innerHTML="<p class='lead' style='margin-top:14px'>읽을 수 있는 코드가 없습니다. 학생이 보낸 코드를 <b>DE1.</b> 부터 끝까지 통째로 붙여넣었는지 확인해 주세요.</p>";
+    $("tableOut").innerHTML="<p class='lead' style='margin-top:14px'>읽을 수 있는 코드가 없습니다. 학생이 보낸 코드를 <b>DE2.</b> 부터 끝까지 통째로 붙여넣었는지 확인해 주세요.</p>";
     return;
   }
   const tally={};
   lastRows=[];
   let html="<table class='marks'><tr><th>이름</th><th>단원</th><th>연습</th><th>평균</th><th>다시 연습이 필요한 문장</th></tr>";
   ok.forEach(p=>{
-    const u=UNITS.find(x=>x.id===p.u);
-    const look=(a,b)=>(u && u.sections[a] && u.sections[a].items[b]) ? u.sections[a].items[b].de : "?";
-    const avg=Math.round(p.s.reduce((a,r)=>a+r[2],0)/p.s.length);
-    const weak=p.s.filter(r=>r[2]<70).sort((a,b)=>a[2]-b[2]).slice(0,3)
-                   .map(r=>look(r[0],r[1])+" ("+r[2]+")");
-    p.s.forEach(r=>{
-      const k=p.u+"|"+r[0]+"-"+r[1];
-      if(!tally[k]) tally[k]={sum:0,cnt:0,u:p.u,si:r[0],pi:r[1]};
-      tally[k].sum+=r[2]; tally[k].cnt++;
+    p.units.forEach(un=>{
+      const u=UNITS.find(x=>x.id===un.u);
+      const uname=u ? u.title : un.u;
+      const look=(a,b)=>(u && u.sections[a] && u.sections[a].items[b]) ? u.sections[a].items[b].de : "?";
+      if(!un.s.length) return;
+      const avg=Math.round(un.s.reduce((a,r)=>a+r[2],0)/un.s.length);
+      const weak=un.s.filter(r=>r[2]<70).sort((a,b)=>a[2]-b[2]).slice(0,3)
+                     .map(r=>look(r[0],r[1])+" ("+r[2]+")");
+      un.s.forEach(r=>{
+        const k=un.u+"|"+r[0]+"-"+r[1];
+        if(!tally[k]) tally[k]={sum:0,cnt:0,u:un.u,si:r[0],pi:r[1]};
+        tally[k].sum+=r[2]; tally[k].cnt++;
+      });
+      const cls=avg>=88?"g":avg>=70?"a":"b";
+      html+="<tr><td>"+esc(p.n||"(이름 없음)")+"</td><td>"+esc(uname)+"</td><td>"+un.s.length+"문장</td>"+
+            "<td class='n "+cls+"'>"+avg+"</td><td class='de'>"+(weak.length?esc(weak.join(" / ")):"—")+"</td></tr>";
+      lastRows.push([p.n||"", uname, p.d||"", un.s.length, avg, weak.join(" / ")]);
     });
-    const cls=avg>=88?"g":avg>=70?"a":"b";
-    html+="<tr><td>"+esc(p.n||"(이름 없음)")+"</td><td>"+esc(p.u)+"</td><td>"+p.s.length+"문장</td>"+
-          "<td class='n "+cls+"'>"+avg+"</td><td class='de'>"+(weak.length?esc(weak.join(" / ")):"—")+"</td></tr>";
-    lastRows.push([p.n||"", p.u, p.d||"", p.s.length, avg, weak.join(" / ")]);
   });
   html+="</table>";
   if(bad.length) html+="<p class='lead' style='margin-top:10px'>읽지 못한 줄 "+bad.length+"개는 건너뛰었습니다.</p>";
