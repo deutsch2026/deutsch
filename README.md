@@ -1,0 +1,946 @@
+[deutsch-sprechen.html](https://github.com/user-attachments/files/33134868/deutsch-sprechen.html)
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch sprechen — 독일어 회화 연습</title>
+<style>
+  :root{
+    --ink:#14181D;
+    --paper:#E8E9E4;
+    --surface:#FFFFFF;
+    --line:#C9CBC4;
+    --sign:#F3C218;
+    --plum:#5B2D82;
+    --good:#1F7A4D;
+    --warn:#B5761A;
+    --bad:#C0342B;
+    --muted:#6B7178;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .de{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-0.015em;}
+  .wrap{max-width:780px;margin:0 auto;padding:20px 18px 60px;}
+
+  header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  h1{font-size:21px;font-weight:700;margin:0;letter-spacing:-0.02em;}
+  header .who{margin-left:auto;font-size:13.5px;color:var(--muted);}
+  header .who button{font:inherit;font-size:13px;background:none;border:none;color:var(--plum);cursor:pointer;text-decoration:underline;padding:2px;}
+
+  .unitbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+  .unitbar select{
+    font:inherit;font-size:15px;font-weight:600;padding:7px 10px;
+    border:1.5px solid var(--ink);border-radius:var(--radius);background:var(--surface);color:var(--ink);
+  }
+  details.info{font-size:14px;color:var(--muted);margin-bottom:14px;}
+  details.info summary{cursor:pointer;color:var(--plum);font-weight:600;}
+  details.info .body{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-top:8px;color:var(--ink);}
+  details.info ul{margin:0 0 10px;padding-left:18px;}
+  table.gram{border-collapse:collapse;width:100%;font-size:14px;}
+  table.gram th,table.gram td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);}
+  table.gram th{color:var(--muted);font-weight:600;}
+  table.gram td.v{color:var(--bad);font-weight:600;}
+
+  nav.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;}
+  nav.tabs button{
+    flex:0 0 auto;font:inherit;font-size:14px;background:transparent;color:var(--muted);
+    border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;white-space:nowrap;
+  }
+  nav.tabs button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  .card{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .counter{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:14px;}
+  .track{height:3px;background:var(--line);border-radius:2px;overflow:hidden;flex:1;margin-left:14px;}
+  .track i{display:block;height:100%;background:var(--ink);transition:width .25s;}
+
+  .sign{background:var(--sign);border:3px solid var(--ink);border-radius:6px;padding:20px 18px 16px;text-align:center;}
+  .sign .phrase{font-size:clamp(23px,5vw,36px);font-weight:700;line-height:1.25;margin:0;word-break:keep-all;}
+  .sign .phrase span.w{cursor:pointer;border-bottom:2px solid transparent;padding:0 1px;}
+  .sign .phrase span.w:hover,.sign .phrase span.w:focus-visible{border-bottom-color:rgba(0,0,0,.45);outline:none;}
+  .sign .phrase span.w.g{color:var(--good);}
+  .sign .phrase span.w.a{color:var(--warn);}
+  .sign .phrase span.w.b{color:var(--bad);}
+  .ipa{margin:8px 0 0;font-size:14px;color:rgba(0,0,0,.62);font-family:"Segoe UI",system-ui,sans-serif;}
+  .meaning{margin:14px 0 0;font-size:17px;font-weight:500;}
+  .hint{margin:4px 0 0;font-size:13.5px;color:var(--muted);}
+
+  .actions{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;}
+  button.act{font:inherit;font-size:15px;font-weight:600;border:1.5px solid var(--ink);border-radius:var(--radius);
+    background:var(--surface);color:var(--ink);padding:11px 16px;cursor:pointer;}
+  button.act:hover{background:#F4F4F1;}
+  button.act.primary{background:var(--ink);color:#fff;flex:1;min-width:150px;}
+  button.act.primary:hover{background:#2A3038;}
+  button.act.rec{background:var(--bad);border-color:var(--bad);color:#fff;}
+  button:focus-visible{outline:3px solid #4A7BD1;outline-offset:2px;}
+
+  .result{margin-top:20px;border-top:1.5px solid var(--line);padding-top:16px;display:none;}
+  .result.on{display:block;}
+  .verdict{display:flex;align-items:baseline;gap:10px;}
+  .score{font-size:34px;font-weight:700;line-height:1;}
+  .score.g{color:var(--good);}.score.a{color:var(--warn);}.score.b{color:var(--bad);}
+  .verdict p{margin:0;font-size:15px;font-weight:600;}
+  .heard{margin:10px 0 0;font-size:14px;color:var(--muted);}
+  .heard b{font-weight:600;color:var(--ink);}
+  .coach{margin:12px 0 0;padding:12px 14px;background:#F6F6F3;border-left:3px solid var(--sign);border-radius:2px;font-size:14.5px;}
+  .coach button{font:inherit;font-size:13px;background:none;border:1px solid var(--line);border-radius:3px;padding:2px 8px;margin-left:6px;cursor:pointer;}
+
+  .pager{display:flex;justify-content:space-between;gap:8px;margin-top:16px;}
+  .pager button{font:inherit;font-size:15px;background:none;border:none;color:var(--ink);padding:10px 4px;cursor:pointer;font-weight:600;}
+  .pager button:disabled{color:var(--line);cursor:default;}
+  .dots{display:flex;gap:5px;margin-top:14px;flex-wrap:wrap;}
+  .dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block;}
+  .dots i.done{background:var(--good);}
+  .dots i.retry{background:var(--bad);}
+  .dots i.now{box-shadow:0 0 0 3px rgba(20,24,29,.18);}
+
+  .notice{margin-top:18px;font-size:13.5px;color:var(--muted);border:1.5px dashed var(--line);border-radius:var(--radius);padding:12px 14px;}
+  .notice b{color:var(--ink);}
+
+  .panel{margin-top:18px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);padding:18px;}
+  .panel h2{font-size:16px;margin:0 0 4px;}
+  .panel p.lead{font-size:14px;color:var(--muted);margin:0 0 12px;}
+  textarea{width:100%;font-size:13.5px;font-family:ui-monospace,Menlo,Consolas,monospace;line-height:1.5;
+    border:1.5px solid var(--line);border-radius:var(--radius);padding:10px;resize:vertical;background:#FBFBF9;color:var(--ink);}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  table.marks{border-collapse:collapse;width:100%;font-size:14px;margin-top:14px;}
+  table.marks th,table.marks td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.marks th{font-size:12.5px;color:var(--muted);font-weight:600;}
+  table.marks td.n{font-weight:700;}
+  table.marks td.n.g{color:var(--good);} table.marks td.n.a{color:var(--warn);} table.marks td.n.b{color:var(--bad);}
+  .weak{margin-top:14px;font-size:14px;background:#F6F6F3;border-left:3px solid var(--plum);padding:12px 14px;}
+  .weak ol{margin:6px 0 0;padding-left:20px;}
+
+  .gate{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .gate h2{margin:0 0 6px;font-size:18px;}
+  .gate p{margin:0 0 14px;font-size:14.5px;color:var(--muted);}
+  .gate input{font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:var(--radius);width:220px;}
+  .hidden{display:none;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 class="de">Deutsch sprechen</h1>
+    <span class="who" id="who"></span>
+  </header>
+
+  <div class="gate" id="gate">
+    <h2>이름을 입력하고 시작하세요</h2>
+    <p>연습을 마치면 이 이름으로 결과 코드가 만들어집니다. 선생님께 제출할 때 쓰여요.</p>
+    <div class="row">
+      <input id="nameInput" placeholder="예: 김민지" autocomplete="off">
+      <button class="act primary" id="startBtn" style="flex:0 0 auto;min-width:0">시작하기</button>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <div class="unitbar">
+      <select id="unitSel" aria-label="단원 선택"></select>
+    </div>
+
+    <details class="info">
+      <summary>단원 정보 보기</summary>
+      <div class="body" id="unitInfoBody"></div>
+    </details>
+
+    <nav class="tabs" id="tabs" aria-label="파트"></nav>
+
+    <div class="card">
+      <div class="counter">
+        <span id="count"></span>
+        <span class="track"><i id="bar" style="width:0%"></i></span>
+      </div>
+
+      <div class="sign">
+        <p class="phrase de" id="phrase"></p>
+        <p class="ipa" id="ipa"></p>
+      </div>
+
+      <p class="meaning" id="meaning"></p>
+      <p class="hint">노란 판의 단어를 누르면 그 단어만 들을 수 있어요.</p>
+
+      <div class="actions">
+        <button class="act" id="play">▶ 듣기</button>
+        <button class="act" id="slow">🐢 천천히</button>
+        <button class="act primary" id="rec">🎤 따라 말하기</button>
+      </div>
+
+      <div class="result" id="result" aria-live="polite">
+        <div class="verdict">
+          <span class="score" id="score">—</span>
+          <p id="verdictText"></p>
+        </div>
+        <p class="heard" id="heard"></p>
+        <div class="coach" id="coach"></div>
+      </div>
+
+      <div class="pager">
+        <button id="prev">← 이전 문장</button>
+        <button id="next">다음 문장 →</button>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <p class="notice" id="notice">
+      <b>마이크가 안 될 때</b> — 크롬 또는 엣지에서 열고, 주소창 자물쇠 아이콘에서 마이크를 허용해 주세요.
+      음성인식은 인터넷 연결이 필요합니다. 연결이 끊겨도 듣기와 따라 읽기는 그대로 됩니다.
+    </p>
+
+    <div class="panel">
+      <h2>연습 결과 제출하기</h2>
+      <p class="lead" id="myStat"></p>
+      <div class="row">
+        <button class="act" id="makeCode">결과 코드 만들기</button>
+        <button class="act" id="copyCode">코드 복사</button>
+      </div>
+      <textarea id="codeOut" rows="3" readonly placeholder="버튼을 누르면 여기에 코드가 만들어집니다. 복사해서 줌 채팅에 붙여넣으세요." style="margin-top:10px"></textarea>
+    </div>
+
+    <details class="info" style="margin-top:18px">
+      <summary>선생님용 채점판</summary>
+      <div class="panel" style="margin-top:8px">
+        <p class="lead">학생들이 보낸 결과 코드를 한 줄에 하나씩 붙여넣고 채점표를 만드세요.</p>
+        <textarea id="codeIn" rows="5" placeholder="DE1.eyJuIjoi..."></textarea>
+        <div class="row">
+          <button class="act" id="buildTable">채점표 만들기</button>
+          <button class="act" id="csvBtn">CSV로 저장</button>
+        </div>
+        <div id="tableOut"></div>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<script>
+"use strict";
+
+/* =========================================================
+   단원 데이터
+   새 단원을 추가할 때는 UNITS 배열에 아래 형식으로 하나 더 붙이면 됩니다.
+   { id, title, goals[], grammar[[앞, 동사, 뒤]], sections[{ name, items[] }] }
+   items: { de: 독일어, ipa: 발음기호, ko: 뜻, tip: 발음 요령 }
+   ========================================================= */
+const UNITS = [
+{
+  id:"L2",
+  title:"Lektion 2. Guten Tag!",
+  goals:[
+    "만날 때와 헤어질 때 인사할 수 있다.",
+    "상대방과 이름을 묻고 답할 수 있다.",
+    "연락처를 교환할 수 있다."
+  ],
+  grammar:[
+    ["Ich","heiße","Minsu."],
+    ["Ich","bin","Eva."],
+    ["Wie","heißt","du?"],
+    ["Wie","ist","deine Handynummer?"]
+  ],
+  sections:[
+  {
+    name:"A. 인사말",
+    items:[
+      { de:"Guten Morgen!", ipa:"[ˌɡuːtn̩ ˈmɔʁɡn̩]", ko:"좋은 아침이에요.", tip:"Morgen의 r은 혀가 아니라 목젖에서 납니다. '모르겐'보다 '모어겐'에 가깝게." },
+      { de:"Guten Tag!", ipa:"[ˌɡuːtn̩ ˈtaːk]", ko:"안녕하세요. (낮 인사)", tip:"Tag의 끝 g는 [k]로 바뀝니다. '타그'가 아니라 '타크'." },
+      { de:"Guten Abend!", ipa:"[ˌɡuːtn̩ ˈaːbn̩t]", ko:"안녕하세요. (저녁 인사)", tip:"Abend의 끝 d도 [t]. a를 길게 끌어 '아－벤트'." },
+      { de:"Gute Nacht!", ipa:"[ˈɡuːtə naxt]", ko:"잘 자요.", tip:"Nacht의 ch는 목 안쪽에서 긁는 소리입니다. ich의 ch와 다릅니다." },
+      { de:"Hallo!", ipa:"[ˈhaloː]", ko:"안녕!", tip:"h를 숨을 내쉬듯 확실히 내고, 뒤의 o는 길게. '할로－'." },
+      { de:"Hallo, wie geht's?", ipa:"[ˈhaloː viː ɡeːts]", ko:"안녕, 잘 지내?", tip:"geht's는 geht es를 줄인 말이라 '게츠'로 한 덩어리처럼 읽습니다. w는 [v]." }
+    ]
+  },
+  {
+    name:"B. 헤어질 때",
+    items:[
+      { de:"Tschüs!", ipa:"[tʃyːs]", ko:"잘 가!", tip:"tsch는 한 덩어리 [츄], 이어서 ü. 입술을 동그랗게 유지하세요." },
+      { de:"Auf Wiedersehen!", ipa:"[aʊ̯f ˈviːdɐˌzeːən]", ko:"안녕히 가세요.", tip:"W는 [v], -sehen의 s는 [z]. '아우프 비더제엔'." },
+      { de:"Bis morgen!", ipa:"[bɪs ˈmɔʁɡn̩]", ko:"내일 봐!", tip:"Bis의 i는 짧게 끊고, morgen까지 한 호흡으로 이어 주세요." },
+      { de:"Hier, bitte.", ipa:"[hiːɐ̯ ˈbɪtə]", ko:"여기 있습니다.", tip:"Hier의 끝 r은 굴리지 말고 약한 '어'로. '히어'." },
+      { de:"Danke, auf Wiedersehen!", ipa:"[ˈdaŋkə aʊ̯f ˈviːdɐˌzeːən]", ko:"감사합니다, 안녕히 가세요.", tip:"Danke의 a는 짧게. 두 표현 사이를 살짝 끊어 읽습니다." }
+    ]
+  },
+  {
+    name:"C. 이름 묻고 답하기",
+    items:[
+      { de:"Ich heiße Eva.", ipa:"[ɪç ˈhaɪ̯sə ˈeːfa]", ko:"저는 에바예요.", tip:"ich의 ch는 '이크'가 아닙니다. 'ㅎ'을 혀 앞쪽에서 내는 바람 소리예요. Eva의 v는 [f]." },
+      { de:"Ich bin Martin.", ipa:"[ɪç bɪn ˈmaʁtiːn]", ko:"저는 마르틴이에요.", tip:"Martin의 r은 목젖에서. '마르틴'보다 '마아틴'에 가깝습니다." },
+      { de:"Wie heißt du?", ipa:"[viː haɪ̯st duː]", ko:"이름이 뭐야?", tip:"ß는 [s] 하나. '하이스트'. du의 u는 입술을 모아 길게." },
+      { de:"Mein Name ist Leon Schneider.", ipa:"[maɪ̯n ˈnaːmə ɪst ˈleːɔn ˈʃnaɪ̯dɐ]", ko:"제 이름은 레온 슈나이더입니다.", tip:"sch는 [슈]. Schneider는 '슈나이더'로 읽습니다." },
+      { de:"Wie bitte?", ipa:"[viː ˈbɪtə]", ko:"네? 뭐라고요?", tip:"못 알아들었을 때 쓰는 표현입니다. 끝을 올려 읽으세요." },
+      { de:"Noch einmal, bitte.", ipa:"[nɔx ˈaɪ̯nmaːl ˈbɪtə]", ko:"한 번만 더 말해 주세요.", tip:"Noch의 ch는 Nacht처럼 목 안쪽 소리. ei는 '아이'." },
+      { de:"Hallo, ich bin Minho. Wie heißt du?", ipa:"[ˈhaloː ɪç bɪn ˈminho viː haɪ̯st duː]", ko:"안녕, 나는 민호야. 이름이 뭐야?", tip:"두 문장이니 중간에 한 번 쉬고, 뒷문장 끝은 올려 주세요." }
+    ]
+  },
+  {
+    name:"D. 숫자 0–10",
+    items:[
+      { de:"null", ipa:"[nʊl]", ko:"0", tip:"u를 짧게 끊습니다. '눌'." },
+      { de:"eins", ipa:"[aɪ̯ns]", ko:"1", tip:"ei는 언제나 '아이'입니다. '에인스'가 아니라 '아인스'." },
+      { de:"zwei", ipa:"[tsvaɪ̯]", ko:"2", tip:"z는 [ts], w는 [v]. '즈바이'가 아니라 '츠바이'." },
+      { de:"drei", ipa:"[dʁaɪ̯]", ko:"3", tip:"r은 목젖에서 냅니다. 혀를 굴리지 마세요." },
+      { de:"vier", ipa:"[fiːɐ̯]", ko:"4", tip:"v는 [f]. '비어'가 아니라 '피어'." },
+      { de:"fünf", ipa:"[fʏnf]", ko:"5", tip:"ü는 입술을 '우' 모양으로 오므린 채 '이'라고 소리 냅니다." },
+      { de:"sechs", ipa:"[zɛks]", ko:"6", tip:"첫 s는 [z]로 울리고, chs는 [ks]. '젝스'." },
+      { de:"sieben", ipa:"[ˈziːbn̩]", ko:"7", tip:"ie는 긴 '이－'. 첫 s는 [z]. '지－벤'." },
+      { de:"acht", ipa:"[axt]", ko:"8", tip:"ch는 목 안쪽에서 긁는 소리. '아흐트'." },
+      { de:"neun", ipa:"[nɔɪ̯n]", ko:"9", tip:"eu는 '오이'. '노인'." },
+      { de:"zehn", ipa:"[tseːn]", ko:"10", tip:"z는 [ts], h는 소리 없이 e를 길게. '체－ㄴ'." }
+    ]
+  },
+  {
+    name:"E. 연락처",
+    items:[
+      { de:"Wie ist deine Handynummer?", ipa:"[viː ɪst ˈdaɪ̯nə ˈhɛndinʊmɐ]", ko:"휴대폰 번호가 뭐야?", tip:"Handy는 영어에서 온 말이라 '핸디'로 읽습니다. 끝의 -er는 약한 '어'." },
+      { de:"Meine Handynummer ist null eins sieben zwei.", ipa:"[ˈmaɪ̯nə ˈhɛndinʊmɐ ɪst nʊl aɪ̯ns ˈziːbn̩ tsvaɪ̯]", ko:"내 휴대폰 번호는 0172야.", tip:"번호는 숫자를 하나씩 또박또박 끊어 읽습니다." },
+      { de:"Wie ist deine Telefonnummer?", ipa:"[viː ɪst ˈdaɪ̯nə teləˈfoːnnʊmɐ]", ko:"전화번호가 뭐야?", tip:"Telefon은 마지막 음절에 힘을 줍니다. 텔-레-폰-누머." },
+      { de:"Meine Telefonnummer ist null acht neun.", ipa:"[ˈmaɪ̯nə teləˈfoːnnʊmɐ ɪst nʊl axt nɔɪ̯n]", ko:"내 전화번호는 089야.", tip:"acht와 neun 사이를 살짝 띄어 읽어야 알아듣기 쉽습니다." }
+    ]
+  }
+  ]
+},
+{
+  id:"L3",
+  title:"Lektion 3. Wie geht's?",
+  goals:[
+    "서로의 안부를 묻고 답할 수 있다.",
+    "출신지와 거주지를 묻고 답할 수 있다."
+  ],
+  grammar:[
+    ["Woher","kommst","du?"],
+    ["Kommst","du","aus Deutschland?"],
+    ["Ich","komme","aus Korea."]
+  ],
+  conj:{
+    heads:["","kommen","wohnen","heißen"],
+    rows:[
+      ["ich","komme","wohne","heiße"],
+      ["du","kommst","wohnst","heißt"],
+      ["Sie","kommen","wohnen","heißen"]
+    ]
+  },
+  sections:[
+  {
+    name:"A. 안부 묻기 (du)",
+    items:[
+      { de:"Hallo, Peter!", ipa:"[ˈhaloː ˈpeːtɐ]", ko:"안녕, 페터!", tip:"Peter의 e는 길게, 끝의 -er는 약한 '어'. '페－터'." },
+      { de:"Hallo, Anne! Wie geht's?", ipa:"[ˈhaloː ˈanə viː ɡeːts]", ko:"안녕, 안네! 잘 지내?", tip:"geht's는 geht es를 줄인 말이라 '게츠'로 한 덩어리처럼 읽습니다." },
+      { de:"Wie geht es dir?", ipa:"[viː ɡeːt əs diːɐ̯]", ko:"잘 지내?", tip:"w는 [v]. dir의 r은 굴리지 말고 약한 '어'로. '디어'." },
+      { de:"Danke, gut. Und dir?", ipa:"[ˈdaŋkə ɡuːt ʊnt diːɐ̯]", ko:"고마워, 잘 지내. 너는?", tip:"Danke의 a는 짧게, gut의 u는 길게. 끝은 올려 물어보세요." },
+      { de:"Danke, gut. Und wie geht es dir?", ipa:"[ˈdaŋkə ɡuːt ʊnt viː ɡeːt əs diːɐ̯]", ko:"고마워, 잘 지내. 너는 어떻게 지내?", tip:"긴 문장이니 Danke, gut 다음에 한 번 쉬어 갑니다." },
+      { de:"Danke, auch gut.", ipa:"[ˈdaŋkə aʊ̯x ɡuːt]", ko:"고마워, 나도 잘 지내.", tip:"auch의 ch는 목 안쪽에서 긁는 소리. '아우흐'." }
+    ]
+  },
+  {
+    name:"B. 기분 말하기",
+    items:[
+      { de:"super", ipa:"[ˈzuːpɐ]", ko:"아주 좋아", tip:"첫 s는 [z]로 울립니다. '수퍼'가 아니라 '주－퍼'." },
+      { de:"sehr gut", ipa:"[zeːɐ̯ ɡuːt]", ko:"아주 좋아", tip:"sehr의 h는 소리 없이 e를 길게. '제어 구트'." },
+      { de:"gut", ipa:"[ɡuːt]", ko:"좋아", tip:"u를 길게 끌고 끝의 t를 분명히 냅니다." },
+      { de:"es geht", ipa:"[ɛs ɡeːt]", ko:"그럭저럭이야", tip:"두 단어를 붙여 '에스게트'처럼 이어 읽습니다." },
+      { de:"nicht so gut", ipa:"[nɪçt zoː ɡuːt]", ko:"별로 좋지 않아", tip:"nicht의 ch는 ich처럼 혀 앞쪽 바람 소리. so의 s는 [z]." }
+    ]
+  },
+  {
+    name:"C. 안부 묻기 (Sie)",
+    items:[
+      { de:"Guten Tag, Frau Bolten!", ipa:"[ˌɡuːtn̩ ˈtaːk fʁaʊ̯ ˈbɔltn̩]", ko:"안녕하세요, 볼텐 씨!", tip:"Frau의 au는 '아우'. r은 목젖에서 냅니다." },
+      { de:"Wie geht es Ihnen?", ipa:"[viː ɡeːt əs ˈiːnən]", ko:"어떻게 지내세요?", tip:"Ihnen의 h는 소리 없이 i를 길게. '이－넨'. 존댓말 표현입니다." },
+      { de:"Danke, sehr gut. Und Ihnen?", ipa:"[ˈdaŋkə zeːɐ̯ ɡuːt ʊnt ˈiːnən]", ko:"고맙습니다, 아주 좋아요. 당신은요?", tip:"Und Ihnen 끝을 올려 물어봅니다." },
+      { de:"Guten Tag, Herr Tillmann. Wie geht es Ihnen?", ipa:"[ˌɡuːtn̩ ˈtaːk hɛʁ ˈtɪlman viː ɡeːt əs ˈiːnən]", ko:"안녕하세요, 틸만 씨. 어떻게 지내세요?", tip:"Herr의 r은 목젖에서. 이름 뒤에 한 번 쉬고 질문을 이어 갑니다." }
+    ]
+  },
+  {
+    name:"D. 나라와 도시",
+    items:[
+      { de:"Deutschland", ipa:"[ˈdɔɪ̯tʃlant]", ko:"독일", tip:"eu는 '오이', tsch는 [츄]. 끝 d는 [t]. '도이츄란트'." },
+      { de:"Österreich", ipa:"[ˈøːstɐʁaɪ̯ç]", ko:"오스트리아", tip:"ö는 '에' 입 모양에서 입술만 오므려서. 끝의 ch는 ich의 ch와 같습니다." },
+      { de:"die Schweiz", ipa:"[diː ʃvaɪ̯ts]", ko:"스위스", tip:"sch는 [슈], w는 [v], z는 [ts]. '디 슈바이츠'." },
+      { de:"Frankreich", ipa:"[ˈfʁaŋkʁaɪ̯ç]", ko:"프랑스", tip:"r이 두 번 나옵니다. 둘 다 목젖에서 내세요." },
+      { de:"England", ipa:"[ˈɛŋlant]", ko:"영국", tip:"영어처럼 '잉글랜드'가 아니라 '엥란트'. 끝 d는 [t]." },
+      { de:"Italien", ipa:"[iˈtaːli̯ən]", ko:"이탈리아", tip:"두 번째 음절에 힘을 줍니다. 이-탈-리엔." },
+      { de:"Japan", ipa:"[ˈjaːpan]", ko:"일본", tip:"독일어 j는 [y] 소리입니다. '자판'이 아니라 '야－판'." },
+      { de:"China", ipa:"[ˈçiːna]", ko:"중국", tip:"ch로 시작합니다. '차이나'가 아니라 ich의 ch로 시작하는 '히－나'." },
+      { de:"Berlin", ipa:"[bɛɐ̯ˈliːn]", ko:"베를린", tip:"뒤 음절에 힘을 줍니다. 베어-린－." },
+      { de:"Wien", ipa:"[viːn]", ko:"빈 (오스트리아 수도)", tip:"W는 [v], ie는 긴 '이－'. '비－ㄴ'." }
+    ]
+  },
+  {
+    name:"E. 출신지와 거주지",
+    items:[
+      { de:"Woher kommst du?", ipa:"[voˈheːɐ̯ kɔmst duː]", ko:"어디에서 왔어?", tip:"Woher는 뒤 음절에 힘을 줍니다. '보헤어'." },
+      { de:"Ich komme aus Korea.", ipa:"[ɪç ˈkɔmə aʊ̯s koˈʁeːa]", ko:"나는 한국에서 왔어.", tip:"Korea는 두 번째 음절에 힘을 줍니다. 코-레－아." },
+      { de:"Wo wohnst du?", ipa:"[voː voːnst duː]", ko:"어디에 살아?", tip:"w가 두 번. 둘 다 [v]입니다. '보 본스트 두'." },
+      { de:"Ich wohne in Seoul.", ipa:"[ɪç ˈvoːnə ɪn zeˈʊl]", ko:"나는 서울에 살아.", tip:"wohne의 h는 소리 없이 o를 길게 늘입니다." },
+      { de:"Kommst du aus Deutschland?", ipa:"[kɔmst duː aʊ̯s ˈdɔɪ̯tʃlant]", ko:"너 독일에서 왔어?", tip:"동사로 시작하는 의문문입니다. 끝을 확실히 올려 주세요." },
+      { de:"Nein, ich komme aus Österreich.", ipa:"[naɪ̯n ɪç ˈkɔmə aʊ̯s ˈøːstɐʁaɪ̯ç]", ko:"아니, 나는 오스트리아에서 왔어.", tip:"Nein 다음에 살짝 쉬고 이어 읽습니다." },
+      { de:"Ich komme aus der Schweiz.", ipa:"[ɪç ˈkɔmə aʊ̯s deːɐ̯ ʃvaɪ̯ts]", ko:"나는 스위스에서 왔어.", tip:"스위스만 aus der를 씁니다. 다른 나라는 aus만 붙입니다." },
+      { de:"Woher kommen Sie?", ipa:"[voˈheːɐ̯ ˈkɔmən ziː]", ko:"어디에서 오셨어요?", tip:"존댓말 형태입니다. Sie의 s는 [z]. '지－'." },
+      { de:"Wo wohnen Sie?", ipa:"[voː ˈvoːnən ziː]", ko:"어디에 사세요?", tip:"wohnen의 끝 -en은 약하게 흘립니다. '보넨'." }
+    ]
+  },
+  {
+    name:"F. 자기소개",
+    items:[
+      { de:"Hallo, ich heiße Suyon.", ipa:"[ˈhaloː ɪç ˈhaɪ̯sə]", ko:"안녕, 나는 수연이야.", tip:"ich의 ch는 혀 앞쪽 바람 소리. heiße의 ß는 [s] 하나." },
+      { de:"Ich komme aus Seoul, Korea.", ipa:"[ɪç ˈkɔmə aʊ̯s zeˈʊl koˈʁeːa]", ko:"나는 한국 서울에서 왔어.", tip:"도시를 먼저, 나라를 뒤에 말합니다. 쉼표에서 한 번 쉬세요." },
+      { de:"Ich komme aus Deutschland, aus Frankfurt.", ipa:"[ɪç ˈkɔmə aʊ̯s ˈdɔɪ̯tʃlant aʊ̯s ˈfʁaŋkfʊʁt]", ko:"나는 독일 프랑크푸르트에서 왔어.", tip:"Frankfurt에 r이 두 번. 둘 다 목젖에서 냅니다." },
+      { de:"Wohnst du in Frankfurt?", ipa:"[voːnst duː ɪn ˈfʁaŋkfʊʁt]", ko:"프랑크푸르트에 살아?", tip:"끝을 올려 물어봅니다. wohnst의 st는 [스트]로 또렷하게." },
+      { de:"Nein, ich wohne in Hamburg.", ipa:"[naɪ̯n ɪç ˈvoːnə ɪn ˈhambʊʁk]", ko:"아니, 나는 함부르크에 살아.", tip:"Hamburg 끝의 g는 [k]. '함부르크'." },
+      { de:"Bist du Student?", ipa:"[bɪst duː ʃtuˈdɛnt]", ko:"너 대학생이야?", tip:"St-로 시작하면 [슈트]. '스투덴트'가 아니라 '슈투덴트'." },
+      { de:"Nein, ich bin Schüler.", ipa:"[naɪ̯n ɪç bɪn ˈʃyːlɐ]", ko:"아니, 나는 학생이야.", tip:"sch는 [슈], ü는 입술을 오므린 '이'. '슐러'." },
+      { de:"Ach so!", ipa:"[ax ˈzoː]", ko:"아, 그렇구나!", tip:"Ach의 ch는 목 안쪽 소리, so의 s는 [z]. 맞장구칠 때 씁니다." }
+    ]
+  }
+  ]
+},
+{
+  id:"L4",
+  title:"Lektion 4. Meine Familie",
+  goals:[
+    "나의 가족을 소개할 수 있다.",
+    "다른 사람의 가족에 대해 질문할 수 있다."
+  ],
+  grammar:[
+    ["Sie","ist","nicht meine Schwester."],
+    ["Ist","er","dein Bruder?"],
+    ["Wer","ist","das?"]
+  ],
+  conj:{
+    heads:["","sein (~이다)","haben (가지고 있다)"],
+    rows:[
+      ["ich","bin","habe"],
+      ["du","bist","hast"],
+      ["er/sie/es","ist","hat"],
+      ["wir","sind","haben"],
+      ["ihr","seid","habt"],
+      ["sie/Sie","sind","haben"]
+    ]
+  },
+  sections:[
+  {
+    name:"A. 가족 호칭",
+    items:[
+      { de:"Vater", ipa:"[ˈfaːtɐ]", ko:"아버지", tip:"v는 [f] 소리입니다. '바터'가 아니라 '파－터'. 끝의 -er는 약한 '어'." },
+      { de:"Mutter", ipa:"[ˈmʊtɐ]", ko:"어머니", tip:"u를 짧게 끊습니다. '무－터'가 아니라 '무터'." },
+      { de:"Bruder", ipa:"[ˈbʁuːdɐ]", ko:"형제 (형·오빠·남동생)", tip:"r은 혀를 굴리지 않고 목젖에서. u는 길게 '브루－더'." },
+      { de:"Schwester", ipa:"[ˈʃvɛstɐ]", ko:"자매 (누나·언니·여동생)", tip:"sch는 [슈], w는 [v]. '슈베스터'." },
+      { de:"Großvater", ipa:"[ˈɡʁoːsfaːtɐ]", ko:"할아버지", tip:"ß는 [s] 하나, o는 길게. '그로－스파터'." },
+      { de:"Großmutter", ipa:"[ˈɡʁoːsmʊtɐ]", ko:"할머니", tip:"Groß를 길게 끌고 mutter를 짧게 붙입니다." },
+      { de:"Onkel", ipa:"[ˈɔŋkl̩]", ko:"삼촌·외삼촌·큰아버지", tip:"독일어는 친가와 외가를 구분하지 않고 모두 Onkel이라고 합니다." },
+      { de:"Tante", ipa:"[ˈtantə]", ko:"이모·고모·숙모", tip:"여자 쪽 어른은 모두 Tante. 끝의 -e는 약한 '어'." },
+      { de:"Sohn", ipa:"[zoːn]", ko:"아들", tip:"첫 s는 [z]로 울립니다. '손'이 아니라 '존－'." },
+      { de:"Tochter", ipa:"[ˈtɔxtɐ]", ko:"딸", tip:"ch는 목 안쪽에서 긁는 소리. '토흐터'." }
+    ]
+  },
+  {
+    name:"B. 가족을 묶어 부르는 말",
+    items:[
+      { de:"die Eltern", ipa:"[diː ˈɛltɐn]", ko:"부모님", tip:"언제나 복수로만 씁니다. '디 엘턴'." },
+      { de:"die Großeltern", ipa:"[diː ˈɡʁoːsʔɛltɐn]", ko:"조부모님", tip:"Groß와 Eltern 사이를 살짝 끊어 읽습니다." },
+      { de:"die Geschwister", ipa:"[diː ɡəˈʃvɪstɐ]", ko:"형제자매", tip:"Ge-는 약하게, sch는 [슈]. '게슈비스터'." },
+      { de:"die Kinder", ipa:"[diː ˈkɪndɐ]", ko:"아이들", tip:"i를 짧게. 한 명일 때는 das Kind입니다." },
+      { de:"der Mann", ipa:"[deːɐ̯ man]", ko:"남편, 남자", tip:"a를 짧게 끊습니다. '만'." },
+      { de:"die Frau", ipa:"[diː fʁaʊ̯]", ko:"아내, 여자", tip:"Fr의 r은 목젖에서, au는 '아우'. '프라우'." }
+    ]
+  },
+  {
+    name:"C. 가족 소개하기",
+    items:[
+      { de:"Das ist meine Familie.", ipa:"[das ɪst ˈmaɪ̯nə faˈmiːli̯ə]", ko:"이게 우리 가족이야.", tip:"Familie는 두 번째 음절에 힘을 줍니다. '파밀리에'." },
+      { de:"Das ist mein Bruder.", ipa:"[das ɪst maɪ̯n ˈbʁuːdɐ]", ko:"이 사람은 내 형제야.", tip:"남성 명사 앞에는 mein을 씁니다. ei는 '아이'." },
+      { de:"Das ist meine Schwester.", ipa:"[das ɪst ˈmaɪ̯nə ˈʃvɛstɐ]", ko:"이 사람은 내 자매야.", tip:"여성 명사 앞에는 meine. 끝에 -e가 붙습니다." },
+      { de:"Das ist mein Großvater.", ipa:"[das ɪst maɪ̯n ˈɡʁoːsfaːtɐ]", ko:"이분은 내 할아버지야.", tip:"Das ist 다음을 한 호흡으로 이어 읽습니다." },
+      { de:"Das sind meine Eltern.", ipa:"[das zɪnt ˈmaɪ̯nə ˈɛltɐn]", ko:"이분들은 내 부모님이야.", tip:"여러 명이면 ist가 아니라 sind. s는 [z]로 울립니다." },
+      { de:"Er ist mein Onkel.", ipa:"[eːɐ̯ ɪst maɪ̯n ˈɔŋkl̩]", ko:"그는 내 삼촌이야.", tip:"Er은 '에어'. 남자는 er로 가리킵니다." },
+      { de:"Sie ist meine Tante.", ipa:"[ziː ɪst ˈmaɪ̯nə ˈtantə]", ko:"그녀는 내 이모야.", tip:"Sie의 s는 [z]. '지'. 여자는 sie로 가리킵니다." },
+      { de:"Sie sind meine Geschwister.", ipa:"[ziː zɪnt ˈmaɪ̯nə ɡəˈʃvɪstɐ]", ko:"그들은 내 형제자매야.", tip:"복수의 sie도 같은 모양입니다. 동사 sind로 구분합니다." },
+      { de:"Das ist mein Hund Bello!", ipa:"[das ɪst maɪ̯n hʊnt ˈbɛlo]", ko:"이건 내 개 벨로야!", tip:"Hund의 끝 d는 [t]. '훈트'." }
+    ]
+  },
+  {
+    name:"D. 가족에 대해 묻고 답하기",
+    items:[
+      { de:"Wer ist das?", ipa:"[veːɐ̯ ɪst das]", ko:"이 사람은 누구야?", tip:"Wer의 w는 [v]. '웨어'가 아니라 '베어'." },
+      { de:"Ist Jan dein Bruder?", ipa:"[ɪst jan daɪ̯n ˈbʁuːdɐ]", ko:"얀이 네 형제야?", tip:"독일어 j는 [y] 소리. '잔'이 아니라 '얀'. 끝을 올려 주세요." },
+      { de:"Ja, er ist mein Bruder.", ipa:"[jaː eːɐ̯ ɪst maɪ̯n ˈbʁuːdɐ]", ko:"응, 그는 내 형제야.", tip:"Ja도 [야]. a를 길게 끕니다." },
+      { de:"Ist sie deine Schwester?", ipa:"[ɪst ziː ˈdaɪ̯nə ˈʃvɛstɐ]", ko:"그녀가 네 자매야?", tip:"내 것은 meine, 네 것은 deine입니다." },
+      { de:"Nein, sie ist nicht meine Schwester.", ipa:"[naɪ̯n ziː ɪst nɪçt ˈmaɪ̯nə ˈʃvɛstɐ]", ko:"아니, 그녀는 내 자매가 아니야.", tip:"nicht의 ch는 목이 아니라 혀 앞쪽에서 나는 바람 소리입니다." },
+      { de:"Wie heißt dein Bruder?", ipa:"[viː haɪ̯st daɪ̯n ˈbʁuːdɐ]", ko:"네 형제 이름이 뭐야?", tip:"ß는 [s] 하나. '하이스트'." },
+      { de:"Wer sind dann Elfriede und Horst?", ipa:"[veːɐ̯ zɪnt dan ɛlˈfʁiːdə ʊnt hɔʁst]", ko:"그럼 엘프리데와 호르스트는 누구야?", tip:"dann은 '그러면'. a를 짧게 끊습니다." },
+      { de:"Habt ihr Geschwister?", ipa:"[haːpt iːɐ̯ ɡəˈʃvɪstɐ]", ko:"너희는 형제자매가 있어?", tip:"habt의 b는 [p]로 바뀝니다. '합트'. ihr는 '이어'." },
+      { de:"Hat er eine Schwester?", ipa:"[hat eːɐ̯ ˈaɪ̯nə ˈʃvɛstɐ]", ko:"그는 자매가 있어?", tip:"haben의 3인칭은 hat입니다. 끝을 올려 물어봅니다." },
+      { de:"Ja, er hat eine Schwester.", ipa:"[jaː eːɐ̯ hat ˈaɪ̯nə ˈʃvɛstɐ]", ko:"응, 자매가 한 명 있어.", tip:"eine는 '한 명'이라는 뜻도 됩니다." }
+    ]
+  },
+  {
+    name:"E. 혼인 상태와 자녀",
+    items:[
+      { de:"Ich bin ledig.", ipa:"[ɪç bɪn ˈleːdɪç]", ko:"나는 미혼이야.", tip:"끝의 -ig는 [이히]로 읽습니다. '레디그'가 아니라 '레디히'." },
+      { de:"Ich bin verheiratet.", ipa:"[ɪç bɪn fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"나는 결혼했어.", tip:"ver-는 약하게 '페어', ei는 '아이'. '페어하이라테트'." },
+      { de:"Ich bin geschieden.", ipa:"[ɪç bɪn ɡəˈʃiːdn̩]", ko:"나는 이혼했어.", tip:"sch는 [슈], ie는 긴 '이－'. '게시－덴'." },
+      { de:"Bist du ledig?", ipa:"[bɪst duː ˈleːdɪç]", ko:"너 미혼이야?", tip:"du에게 묻는 형태입니다. 끝을 올려 주세요." },
+      { de:"Nein, ich bin nicht ledig.", ipa:"[naɪ̯n ɪç bɪn nɪçt ˈleːdɪç]", ko:"아니, 미혼이 아니야.", tip:"nicht를 동사 뒤에 넣어 부정합니다." },
+      { de:"Sind Sie verheiratet?", ipa:"[zɪnt ziː fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"결혼하셨어요?", tip:"존댓말은 Sie와 sind를 씁니다. 둘 다 s는 [z]." },
+      { de:"Ja, ich bin verheiratet.", ipa:"[jaː ɪç bɪn fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"네, 결혼했습니다.", tip:"긴 단어라 '페어-하이-라-테트'로 나눠 연습해 보세요." },
+      { de:"Wir haben Kinder.", ipa:"[viːɐ̯ ˈhaːbn̩ ˈkɪndɐ]", ko:"우리는 아이가 있어.", tip:"Wir의 w는 [v]. '비어'. haben의 끝 -en은 약하게." },
+      { de:"Wir haben ein Kind.", ipa:"[viːɐ̯ ˈhaːbn̩ aɪ̯n kɪnt]", ko:"우리는 아이가 한 명 있어.", tip:"Kind의 끝 d는 [t]. '킨트'." },
+      { de:"Wir haben keine Kinder.", ipa:"[viːɐ̯ ˈhaːbn̩ ˈkaɪ̯nə ˈkɪndɐ]", ko:"우리는 아이가 없어.", tip:"keine가 '없다'를 나타냅니다. nicht를 쓰지 않습니다." }
+    ]
+  },
+  {
+    name:"F. 숫자 11–100",
+    items:[
+      { de:"elf", ipa:"[ɛlf]", ko:"11", tip:"짧게 '엘프'. 11만 특별한 모양입니다." },
+      { de:"zwölf", ipa:"[tsvœlf]", ko:"12", tip:"z는 [ts], ö는 입술을 오므린 '에'. '츠뵐프'." },
+      { de:"dreizehn", ipa:"[ˈdʁaɪ̯tseːn]", ko:"13", tip:"13부터 19까지는 숫자 + zehn입니다. '드라이첸'." },
+      { de:"vierzehn", ipa:"[ˈfɪʁtseːn]", ko:"14", tip:"v는 [f]. vier의 i가 짧아집니다. '피어첸'." },
+      { de:"fünfzehn", ipa:"[ˈfʏnftseːn]", ko:"15", tip:"ü는 입술을 오므린 '이'. '퓐프첸'." },
+      { de:"sechzehn", ipa:"[ˈzɛçtseːn]", ko:"16", tip:"sechs의 s가 사라집니다. '젝스첸'이 아니라 '제히첸'." },
+      { de:"siebzehn", ipa:"[ˈziːptseːn]", ko:"17", tip:"sieben의 -en이 사라집니다. '지벤첸'이 아니라 '지프첸'." },
+      { de:"achtzehn", ipa:"[ˈaxtseːn]", ko:"18", tip:"ch는 목 안쪽 소리. '아흐첸'." },
+      { de:"neunzehn", ipa:"[ˈnɔɪ̯ntseːn]", ko:"19", tip:"eu는 '오이'. '노인첸'." },
+      { de:"zwanzig", ipa:"[ˈtsvantsɪç]", ko:"20", tip:"끝의 -ig는 [이히]. '츠반치히'." },
+      { de:"einundzwanzig", ipa:"[ˈaɪ̯n|ʊnt|tsvantsɪç]", ko:"21", tip:"독일어는 뒷자리를 먼저 말합니다. 1 + und + 20. '아인운트츠반치히'." },
+      { de:"achtundzwanzig", ipa:"[ˈaxt|ʊnt|tsvantsɪç]", ko:"28", tip:"8 + und + 20. 한 덩어리로 붙여 읽습니다." },
+      { de:"dreißig", ipa:"[ˈdʁaɪ̯sɪç]", ko:"30", tip:"30만 -zig가 아니라 -ßig입니다. '드라이시히'." },
+      { de:"vierzig", ipa:"[ˈfɪʁtsɪç]", ko:"40", tip:"v는 [f], 끝은 [이히]. '피어치히'." },
+      { de:"fünfzig", ipa:"[ˈfʏnftsɪç]", ko:"50", tip:"'퓐프치히'. ü를 놓치지 않도록 주의하세요." },
+      { de:"sechzig", ipa:"[ˈzɛçtsɪç]", ko:"60", tip:"여기서도 sechs의 s가 빠집니다. '제히치히'." },
+      { de:"siebzig", ipa:"[ˈziːptsɪç]", ko:"70", tip:"sieben의 -en이 빠집니다. '지프치히'." },
+      { de:"achtzig", ipa:"[ˈaxtsɪç]", ko:"80", tip:"'아흐치히'. ch는 목 안쪽에서." },
+      { de:"neunzig", ipa:"[ˈnɔɪ̯ntsɪç]", ko:"90", tip:"'노인치히'." },
+      { de:"hundert", ipa:"[ˈhʊndɐt]", ko:"100", tip:"u를 짧게, 끝의 -ert는 약한 '어트'. '훈더트'." }
+    ]
+  },
+  {
+    name:"G. 나이 묻기",
+    items:[
+      { de:"Wie alt bist du?", ipa:"[viː alt bɪst duː]", ko:"너 몇 살이야?", tip:"alt의 a를 짧게. '비 알트 비스트 두'." },
+      { de:"Ich bin fünfzehn Jahre alt.", ipa:"[ɪç bɪn ˈfʏnftseːn ˈjaːʁə alt]", ko:"나는 15살이야.", tip:"Jahre의 J는 [y]. '자레'가 아니라 '야－레'." },
+      { de:"Wie alt ist dein Bruder?", ipa:"[viː alt ɪst daɪ̯n ˈbʁuːdɐ]", ko:"네 형제는 몇 살이야?", tip:"alt ist를 '알티스트'처럼 붙여 읽으면 자연스럽습니다." },
+      { de:"Er ist zwanzig Jahre alt.", ipa:"[eːɐ̯ ɪst ˈtsvantsɪç ˈjaːʁə alt]", ko:"그는 20살이야.", tip:"zwanzig의 끝은 [이히]입니다." },
+      { de:"Wie alt ist dein Sohn?", ipa:"[viː alt ɪst daɪ̯n zoːn]", ko:"아들은 몇 살이에요?", tip:"Sohn의 s는 [z], o는 길게. '존－'." },
+      { de:"Wie alt sind Sie?", ipa:"[viː alt zɪnt ziː]", ko:"몇 살이세요?", tip:"존댓말로 물을 때는 sind Sie. 둘 다 [z] 소리." }
+    ]
+  }
+  ]
+}
+];
+
+/* ================= 상태 ================= */
+let ui = 0, si = 0, pi = 0;
+let student = "";
+const rec = {};                       // rec["L2"]["0-3"] = {b:최고점, t:시도횟수}
+const $ = (id) => document.getElementById(id);
+const unit = () => UNITS[ui];
+const sect = () => unit().sections[si];
+const item = () => sect().items[pi];
+function store(){ return rec[unit().id] || (rec[unit().id] = {}); }
+function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+/* ================= 음성 출력 ================= */
+let deVoice = null;
+function pickVoice(){
+  const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  deVoice = vs.find(v => /^de/i.test(v.lang)) || null;
+  if (!deVoice && vs.length){
+    $("notice").innerHTML = "<b>독일어 음성이 없습니다</b> — 이 기기에는 독일어 읽어주기 음성이 설치되어 있지 않아요. 크롬이나 엣지에서 열면 대부분 해결됩니다.";
+  }
+}
+if (window.speechSynthesis){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text, rate){
+  if (!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "de-DE"; u.rate = rate || 0.95;
+  if (deVoice) u.voice = deVoice;
+  speechSynthesis.speak(u);
+}
+
+/* ================= 채점 ================= */
+const DIGITS = {"0":"null","1":"eins","2":"zwei","3":"drei","4":"vier","5":"fünf","6":"sechs","7":"sieben","8":"acht","9":"neun","10":"zehn",
+"11":"elf","12":"zwölf","13":"dreizehn","14":"vierzehn","15":"fünfzehn","16":"sechzehn","17":"siebzehn","18":"achtzehn","19":"neunzehn","20":"zwanzig",
+"21":"einundzwanzig","22":"zweiundzwanzig","23":"dreiundzwanzig","24":"vierundzwanzig","25":"fünfundzwanzig","26":"sechsundzwanzig",
+"27":"siebenundzwanzig","28":"achtundzwanzig","29":"neunundzwanzig","30":"dreisig","40":"vierzig","50":"fünfzig","60":"sechzig",
+"70":"siebzig","80":"achtzig","90":"neunzig","100":"hundert"};
+function norm(s){
+  let t = s.toLowerCase()
+    .replace(/[’'´`]/g,"")                       // geht's -> gehts
+    .replace(/ß/g,"ss")
+    .replace(/[^\p{L}\p{N}\s]/gu," ")
+    .replace(/\s+/g," ").trim();
+  t = t.replace(/\bgeht es\b/g,"gehts");
+  t = t.replace(/\bhandy nummer\b/g,"handynummer").replace(/\btelefon nummer\b/g,"telefonnummer");
+  t = t.split(" ").map(w => DIGITS[w] || w).join(" ");   // 숫자를 독일어 단어로
+  return t.replace(/ss/g,"s");                            // Tschüs / Tschüss 차이 흡수
+}
+function lev(a,b){
+  const n=a.length, m=b.length;
+  if(!n) return m;
+  if(!m) return n;
+  let prev=Array.from({length:m+1},(_,j)=>j), cur=new Array(m+1);
+  for(let i=1;i<=n;i++){
+    cur[0]=i;
+    for(let j=1;j<=m;j++) cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1));
+    const tmp=prev; prev=cur; cur=tmp;
+  }
+  return prev[m];
+}
+function fold(s){ return s.replace(/ä/g,"a").replace(/ö/g,"o").replace(/ü/g,"u"); }
+function wordSim(a,b){
+  if(a===b) return 1;
+  const d=lev(a,b);
+  let sim=Math.max(0, 1 - d/Math.max(a.length,b.length));
+  if(sim>0.7 && fold(a)===fold(b)) sim=0.7;   // 움라우트만 틀려도 표시되도록
+  return sim;
+}
+function align(T,H){
+  const n=T.length, m=H.length;
+  const D=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  const P=Array.from({length:n+1},()=>new Array(m+1).fill(null));
+  for(let i=1;i<=n;i++){ D[i][0]=i; P[i][0]="del"; }
+  for(let j=1;j<=m;j++){ D[0][j]=j; P[0][j]="ins"; }
+  for(let i=1;i<=n;i++) for(let j=1;j<=m;j++){
+    const sub=D[i-1][j-1]+(1-wordSim(T[i-1],H[j-1]));
+    const del=D[i-1][j]+1, ins=D[i][j-1]+1;
+    const best=Math.min(sub,del,ins);
+    D[i][j]=best;
+    P[i][j]= best===sub ? "sub" : (best===del ? "del" : "ins");
+  }
+  const sims=new Array(n).fill(0);
+  let i=n, j=m;
+  while(i>0||j>0){
+    const p=P[i][j];
+    if(p==="sub"){ sims[i-1]=wordSim(T[i-1],H[j-1]); i--; j--; }
+    else if(p==="del"){ sims[i-1]=0; i--; }
+    else { j--; }
+  }
+  return sims;
+}
+function grade(target, heard){
+  const T=norm(target).split(" ").filter(Boolean);
+  const H=norm(heard).split(" ").filter(Boolean);
+  const sims=align(T,H);
+  let num=0, den=0;
+  T.forEach((w,k)=>{ num+=sims[k]*w.length; den+=w.length; });
+  return { score: den ? Math.round(100*num/den) : 0, sims:sims, words:T };
+}
+
+/* ================= 화면 ================= */
+function drawUnits(){
+  const sel=$("unitSel"); sel.innerHTML="";
+  UNITS.forEach((u,k)=>{
+    const o=document.createElement("option");
+    o.value=k; o.textContent=u.title; sel.appendChild(o);
+  });
+  sel.value=ui;
+  sel.onchange=()=>{ ui=+sel.value; si=0; pi=0; drawInfo(); drawTabs(); draw(); };
+}
+function drawInfo(){
+  const u=unit();
+  let h="<b>학습 목표</b><ul>"+u.goals.map(g=>"<li>"+esc(g)+"</li>").join("")+"</ul>";
+  if(u.grammar && u.grammar.length){
+    h+="<b>문장 구조</b><table class='gram'><tr><th>Position 1</th><th>Position 2</th><th></th></tr>";
+    u.grammar.forEach(r=>{
+      h+="<tr><td class='de'>"+esc(r[0])+"</td><td class='de v'>"+esc(r[1])+"</td><td class='de'>"+esc(r[2])+"</td></tr>";
+    });
+    h+="</table>";
+  }
+  if(u.conj){
+    h+="<b style='display:inline-block;margin-top:12px'>동사의 어미 변화</b><table class='gram'><tr>"+
+       u.conj.heads.map(x=>"<th class='de'>"+esc(x)+"</th>").join("")+"</tr>";
+    u.conj.rows.forEach(r=>{
+      h+="<tr><td class='de'><b>"+esc(r[0])+"</b></td>"+
+         r.slice(1).map(x=>"<td class='de v'>"+esc(x)+"</td>").join("")+"</tr>";
+    });
+    h+="</table>";
+  }
+  $("unitInfoBody").innerHTML=h;
+}
+function drawTabs(){
+  const nav=$("tabs"); nav.innerHTML="";
+  unit().sections.forEach((s,k)=>{
+    const b=document.createElement("button");
+    b.textContent=s.name;
+    b.setAttribute("aria-pressed", k===si ? "true" : "false");
+    b.onclick=()=>{ si=k; pi=0; drawTabs(); draw(); };
+    nav.appendChild(b);
+  });
+}
+function drawPhrase(sims){
+  const p=$("phrase"); p.innerHTML="";
+  const raw=item().de.split(" ");
+  const clean=norm(item().de).split(" ").filter(Boolean);
+  raw.forEach((w,k)=>{
+    const s=document.createElement("span");
+    s.className="w"; s.textContent=w; s.tabIndex=0; s.title="이 단어만 듣기";
+    s.onclick=()=>say(w.replace(/[?!.,]/g,""), 0.8);
+    s.onkeydown=(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); s.click(); } };
+    if(sims && k<clean.length) s.classList.add(sims[k]>=0.8?"g":sims[k]>=0.5?"a":"b");
+    p.appendChild(s);
+    if(k<raw.length-1) p.appendChild(document.createTextNode(" "));
+  });
+}
+function drawDots(){
+  const d=$("dots"); d.innerHTML="";
+  sect().items.forEach((_,k)=>{
+    const i=document.createElement("i");
+    const r=store()[si+"-"+k];
+    if(r) i.classList.add(r.b>=70?"done":"retry");
+    if(k===pi) i.classList.add("now");
+    d.appendChild(i);
+  });
+}
+function myStat(){
+  const vals=Object.values(store());
+  let total=0; unit().sections.forEach(x=>{ total+=x.items.length; });
+  if(!vals.length){ $("myStat").textContent="아직 연습한 문장이 없어요. 문장을 따라 말하면 여기에 기록됩니다."; return; }
+  const avg=Math.round(vals.reduce((a,v)=>a+v.b,0)/vals.length);
+  $("myStat").textContent="연습한 문장 "+vals.length+" / "+total+"개 · 평균 "+avg+"점";
+}
+function draw(){
+  const it=item();
+  drawPhrase(null);
+  $("ipa").textContent=it.ipa;
+  $("meaning").textContent=it.ko;
+  $("count").textContent=sect().name+" · "+(pi+1)+" / "+sect().items.length;
+  $("bar").style.width=Math.round(100*(pi+1)/sect().items.length)+"%";
+  $("result").classList.remove("on");
+  $("prev").disabled = pi===0;
+  $("next").disabled = pi===sect().items.length-1;
+  drawDots(); myStat();
+}
+function showResult(best){
+  const it=item();
+  const g=grade(it.de, best);
+  drawPhrase(g.sims);
+  const tier = g.score>=88?"g":g.score>=70?"a":"b";
+  $("score").textContent=g.score;
+  $("score").className="score "+tier;
+  $("verdictText").textContent =
+      g.score>=88 ? "아주 좋아요. 원어민이 알아들을 발음이에요."
+    : g.score>=70 ? "잘했어요. 몇 군데만 다듬으면 됩니다."
+    : g.score>=45 ? "조금만 더. 느리게 한 번 듣고 다시 해볼까요."
+    :               "다시 해봅시다. 천천히 듣기부터 시작하세요.";
+  $("heard").innerHTML="들린 문장: <b>"+esc(best||"(소리가 잡히지 않았어요)")+"</b>";
+
+  let worst=-1, low=1;
+  g.sims.forEach((s,k)=>{ if(s<low){ low=s; worst=k; } });
+  let coach=esc(it.tip);
+  if(worst>=0 && low<0.8) coach += ' <button type="button" id="wordBtn">‘'+esc(g.words[worst])+"’ 다시 듣기</button>";
+  $("coach").innerHTML=coach;
+  const wb=$("wordBtn");
+  if(wb) wb.onclick=()=>say(g.words[worst], 0.75);
+
+  const s=store(), k=si+"-"+pi, old=s[k];
+  s[k] = { b: old ? Math.max(old.b, g.score) : g.score, t: (old?old.t:0)+1 };
+  drawDots(); myStat();
+  $("result").classList.add("on");
+}
+
+/* ================= 음성 인식 ================= */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let listening=false, timer=null;
+function listen(){
+  if(!SR){
+    $("notice").innerHTML="<b>이 브라우저는 음성인식을 지원하지 않습니다</b> — 크롬 또는 엣지에서 열어 주세요. 그전까지는 듣기 기능으로 따라 읽으며 연습할 수 있어요.";
+    return;
+  }
+  if(listening) return;
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  const r=new SR();
+  r.lang="de-DE"; r.interimResults=false; r.maxAlternatives=5;
+  const btn=$("rec");
+  listening=true; btn.classList.add("rec"); btn.textContent="● 듣는 중… 지금 말하세요";
+  const reset=()=>{ listening=false; btn.classList.remove("rec"); btn.textContent="🎤 따라 말하기"; clearTimeout(timer); };
+  r.onresult=(e)=>{
+    const alts=e.results[0];
+    let best="", bestScore=-1;
+    for(let k=0;k<alts.length;k++){
+      const t=alts[k].transcript, s=grade(item().de,t).score;
+      if(s>bestScore){ bestScore=s; best=t; }
+    }
+    reset(); showResult(best.trim());
+  };
+  r.onerror=(e)=>{
+    reset();
+    const msg={
+      "not-allowed":"마이크 권한이 꺼져 있습니다. 주소창의 자물쇠 아이콘에서 마이크를 허용해 주세요.",
+      "service-not-allowed":"이 화면에서는 마이크를 쓸 수 없습니다. 파일을 내려받아 브라우저에서 직접 열면 동작합니다.",
+      "no-speech":"소리가 잡히지 않았어요. 마이크에 조금 더 가까이서 다시 말해 보세요.",
+      "audio-capture":"마이크를 찾지 못했습니다. 기기에 마이크가 연결되어 있는지 확인해 주세요.",
+      "network":"음성인식 서버에 연결하지 못했습니다. 인터넷 연결을 확인해 주세요."
+    }[e.error] || ("음성인식이 중단되었습니다. ("+e.error+") 다시 시도해 주세요.");
+    $("notice").innerHTML="<b>안내</b> — "+msg;
+  };
+  r.onend=reset;
+  try{ r.start(); }catch(err){ reset(); }
+  timer=setTimeout(()=>{ try{ r.stop(); }catch(err){} }, 8000);
+}
+
+/* ================= 결과 코드 ================= */
+function b64enc(str){
+  const bytes=new TextEncoder().encode(str);
+  let bin="";
+  for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+function b64dec(b64){
+  const bin=atob(b64);
+  const bytes=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function makeCode(){
+  const all=[];
+  UNITS.forEach(u=>{
+    const s=rec[u.id];
+    if(!s) return;
+    const rows=Object.keys(s).map(k=>{
+      const p=k.split("-");
+      return [ +p[0], +p[1], s[k].b, s[k].t ];
+    });
+    if(rows.length) all.push([u.id, rows]);
+  });
+  if(!all.length){
+    $("codeOut").value="아직 연습 기록이 없습니다. 문장을 하나 이상 따라 말한 뒤에 눌러 주세요.";
+    return;
+  }
+  const d=new Date();
+  const day=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  $("codeOut").value="DE2."+b64enc(JSON.stringify({ n:student, d:day, r:all }));
+}
+function parseCode(line){
+  const t=line.trim();
+  if(!t) return null;
+  try{
+    if(t.indexOf("DE2.")===0){
+      const o=JSON.parse(b64dec(t.slice(4)));
+      if(!o || !Array.isArray(o.r)) return { bad:true };
+      return { n:o.n, d:o.d, units:o.r.map(x=>({ u:x[0], s:x[1] })) };
+    }
+    if(t.indexOf("DE1.")===0){          // 2과만 있던 예전 코드도 읽습니다.
+      const o=JSON.parse(b64dec(t.slice(4)));
+      if(!o || !Array.isArray(o.s)) return { bad:true };
+      return { n:o.n, d:o.d, units:[{ u:o.u, s:o.s }] };
+    }
+  }catch(e){ return { bad:true }; }
+  return { bad:true };
+}
+
+/* ================= 교사용 채점표 ================= */
+let lastRows=[];
+function buildTable(){
+  const parsed=$("codeIn").value.split("\n").map(parseCode).filter(Boolean);
+  const ok=parsed.filter(p=>!p.bad), bad=parsed.filter(p=>p.bad);
+  if(!ok.length){
+    $("tableOut").innerHTML="<p class='lead' style='margin-top:14px'>읽을 수 있는 코드가 없습니다. 학생이 보낸 코드를 <b>DE2.</b> 부터 끝까지 통째로 붙여넣었는지 확인해 주세요.</p>";
+    return;
+  }
+  const tally={};
+  lastRows=[];
+  let html="<table class='marks'><tr><th>이름</th><th>단원</th><th>연습</th><th>평균</th><th>다시 연습이 필요한 문장</th></tr>";
+  ok.forEach(p=>{
+    p.units.forEach(un=>{
+      const u=UNITS.find(x=>x.id===un.u);
+      const uname=u ? u.title : un.u;
+      const look=(a,b)=>(u && u.sections[a] && u.sections[a].items[b]) ? u.sections[a].items[b].de : "?";
+      if(!un.s.length) return;
+      const avg=Math.round(un.s.reduce((a,r)=>a+r[2],0)/un.s.length);
+      const weak=un.s.filter(r=>r[2]<70).sort((a,b)=>a[2]-b[2]).slice(0,3)
+                     .map(r=>look(r[0],r[1])+" ("+r[2]+")");
+      un.s.forEach(r=>{
+        const k=un.u+"|"+r[0]+"-"+r[1];
+        if(!tally[k]) tally[k]={sum:0,cnt:0,u:un.u,si:r[0],pi:r[1]};
+        tally[k].sum+=r[2]; tally[k].cnt++;
+      });
+      const cls=avg>=88?"g":avg>=70?"a":"b";
+      html+="<tr><td>"+esc(p.n||"(이름 없음)")+"</td><td>"+esc(uname)+"</td><td>"+un.s.length+"문장</td>"+
+            "<td class='n "+cls+"'>"+avg+"</td><td class='de'>"+(weak.length?esc(weak.join(" / ")):"—")+"</td></tr>";
+      lastRows.push([p.n||"", uname, p.d||"", un.s.length, avg, weak.join(" / ")]);
+    });
+  });
+  html+="</table>";
+  if(bad.length) html+="<p class='lead' style='margin-top:10px'>읽지 못한 줄 "+bad.length+"개는 건너뛰었습니다.</p>";
+
+  const hard=Object.keys(tally).map(k=>{
+    const v=tally[k], u=UNITS.find(x=>x.id===v.u);
+    const it=(u && u.sections[v.si]) ? u.sections[v.si].items[v.pi] : null;
+    return { de: it?it.de:"?", avg: Math.round(v.sum/v.cnt), cnt: v.cnt };
+  }).filter(x=>x.cnt>=2).sort((a,b)=>a.avg-b.avg).slice(0,3);
+  if(hard.length){
+    html+="<div class='weak'><b>반 전체가 가장 어려워한 문장</b><ol>"+
+      hard.map(h=>"<li><span class='de'>"+esc(h.de)+"</span> — 평균 "+h.avg+"점 ("+h.cnt+"명)</li>").join("")+
+      "</ol></div>";
+  }
+  $("tableOut").innerHTML=html;
+}
+function downloadCSV(){
+  if(!lastRows.length){ buildTable(); }
+  if(!lastRows.length) return;
+  const head=["이름","단원","날짜","연습문장수","평균","취약문장"];
+  const csv="\uFEFF"+[head].concat(lastRows)
+    .map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\n");
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download="독일어_회화_점수.csv";
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ================= 이벤트 ================= */
+function start(){
+  const v=$("nameInput").value.trim();
+  if(!v){ $("nameInput").focus(); return; }
+  student=v;
+  $("gate").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  $("who").innerHTML=esc(student)+' <button id="rename">이름 바꾸기</button>';
+  $("rename").onclick=()=>{
+    $("nameInput").value=student;
+    $("app").classList.add("hidden");
+    $("gate").classList.remove("hidden");
+    $("nameInput").focus();
+  };
+  drawUnits(); drawInfo(); drawTabs(); draw();
+}
+$("startBtn").onclick=start;
+$("nameInput").onkeydown=(e)=>{ if(e.key==="Enter") start(); };
+
+$("play").onclick=()=>say(item().de, 0.95);
+$("slow").onclick=()=>say(item().de, 0.6);
+$("rec").onclick=listen;
+$("prev").onclick=()=>{ if(pi>0){ pi--; draw(); } };
+$("next").onclick=()=>{ if(pi<sect().items.length-1){ pi++; draw(); } };
+$("makeCode").onclick=makeCode;
+$("copyCode").onclick=()=>{
+  const t=$("codeOut");
+  if(!t.value) makeCode();
+  t.select();
+  try{ document.execCommand("copy"); }catch(e){}
+  if(navigator.clipboard) navigator.clipboard.writeText(t.value).catch(()=>{});
+};
+$("buildTable").onclick=buildTable;
+$("csvBtn").onclick=downloadCSV;
+
+document.addEventListener("keydown",(e)=>{
+  if($("app").classList.contains("hidden")) return;
+  const tag=e.target.tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  if(e.key==="ArrowRight") $("next").click();
+  else if(e.key==="ArrowLeft") $("prev").click();
+  else if(e.key==="Enter"){ e.preventDefault(); listen(); }
+});
+
+$("nameInput").focus();
+</script>
+</body>
+</html>
