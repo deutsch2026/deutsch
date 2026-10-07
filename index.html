@@ -400,6 +400,138 @@ const UNITS = [
     ]
   }
   ]
+},
+{
+  id:"L4",
+  title:"Lektion 4. Meine Familie",
+  goals:[
+    "나의 가족을 소개할 수 있다.",
+    "다른 사람의 가족에 대해 질문할 수 있다."
+  ],
+  grammar:[
+    ["Sie","ist","nicht meine Schwester."],
+    ["Ist","er","dein Bruder?"],
+    ["Wer","ist","das?"]
+  ],
+  conj:{
+    heads:["","sein (~이다)","haben (가지고 있다)"],
+    rows:[
+      ["ich","bin","habe"],
+      ["du","bist","hast"],
+      ["er/sie/es","ist","hat"],
+      ["wir","sind","haben"],
+      ["ihr","seid","habt"],
+      ["sie/Sie","sind","haben"]
+    ]
+  },
+  sections:[
+  {
+    name:"A. 가족 호칭",
+    items:[
+      { de:"Vater", ipa:"[ˈfaːtɐ]", ko:"아버지", tip:"v는 [f] 소리입니다. '바터'가 아니라 '파－터'. 끝의 -er는 약한 '어'." },
+      { de:"Mutter", ipa:"[ˈmʊtɐ]", ko:"어머니", tip:"u를 짧게 끊습니다. '무－터'가 아니라 '무터'." },
+      { de:"Bruder", ipa:"[ˈbʁuːdɐ]", ko:"형제 (형·오빠·남동생)", tip:"r은 혀를 굴리지 않고 목젖에서. u는 길게 '브루－더'." },
+      { de:"Schwester", ipa:"[ˈʃvɛstɐ]", ko:"자매 (누나·언니·여동생)", tip:"sch는 [슈], w는 [v]. '슈베스터'." },
+      { de:"Großvater", ipa:"[ˈɡʁoːsfaːtɐ]", ko:"할아버지", tip:"ß는 [s] 하나, o는 길게. '그로－스파터'." },
+      { de:"Großmutter", ipa:"[ˈɡʁoːsmʊtɐ]", ko:"할머니", tip:"Groß를 길게 끌고 mutter를 짧게 붙입니다." },
+      { de:"Onkel", ipa:"[ˈɔŋkl̩]", ko:"삼촌·외삼촌·큰아버지", tip:"독일어는 친가와 외가를 구분하지 않고 모두 Onkel이라고 합니다." },
+      { de:"Tante", ipa:"[ˈtantə]", ko:"이모·고모·숙모", tip:"여자 쪽 어른은 모두 Tante. 끝의 -e는 약한 '어'." },
+      { de:"Sohn", ipa:"[zoːn]", ko:"아들", tip:"첫 s는 [z]로 울립니다. '손'이 아니라 '존－'." },
+      { de:"Tochter", ipa:"[ˈtɔxtɐ]", ko:"딸", tip:"ch는 목 안쪽에서 긁는 소리. '토흐터'." }
+    ]
+  },
+  {
+    name:"B. 가족을 묶어 부르는 말",
+    items:[
+      { de:"die Eltern", ipa:"[diː ˈɛltɐn]", ko:"부모님", tip:"언제나 복수로만 씁니다. '디 엘턴'." },
+      { de:"die Großeltern", ipa:"[diː ˈɡʁoːsʔɛltɐn]", ko:"조부모님", tip:"Groß와 Eltern 사이를 살짝 끊어 읽습니다." },
+      { de:"die Geschwister", ipa:"[diː ɡəˈʃvɪstɐ]", ko:"형제자매", tip:"Ge-는 약하게, sch는 [슈]. '게슈비스터'." },
+      { de:"die Kinder", ipa:"[diː ˈkɪndɐ]", ko:"아이들", tip:"i를 짧게. 한 명일 때는 das Kind입니다." },
+      { de:"der Mann", ipa:"[deːɐ̯ man]", ko:"남편, 남자", tip:"a를 짧게 끊습니다. '만'." },
+      { de:"die Frau", ipa:"[diː fʁaʊ̯]", ko:"아내, 여자", tip:"Fr의 r은 목젖에서, au는 '아우'. '프라우'." }
+    ]
+  },
+  {
+    name:"C. 가족 소개하기",
+    items:[
+      { de:"Das ist meine Familie.", ipa:"[das ɪst ˈmaɪ̯nə faˈmiːli̯ə]", ko:"이게 우리 가족이야.", tip:"Familie는 두 번째 음절에 힘을 줍니다. '파밀리에'." },
+      { de:"Das ist mein Bruder.", ipa:"[das ɪst maɪ̯n ˈbʁuːdɐ]", ko:"이 사람은 내 형제야.", tip:"남성 명사 앞에는 mein을 씁니다. ei는 '아이'." },
+      { de:"Das ist meine Schwester.", ipa:"[das ɪst ˈmaɪ̯nə ˈʃvɛstɐ]", ko:"이 사람은 내 자매야.", tip:"여성 명사 앞에는 meine. 끝에 -e가 붙습니다." },
+      { de:"Das ist mein Großvater.", ipa:"[das ɪst maɪ̯n ˈɡʁoːsfaːtɐ]", ko:"이분은 내 할아버지야.", tip:"Das ist 다음을 한 호흡으로 이어 읽습니다." },
+      { de:"Das sind meine Eltern.", ipa:"[das zɪnt ˈmaɪ̯nə ˈɛltɐn]", ko:"이분들은 내 부모님이야.", tip:"여러 명이면 ist가 아니라 sind. s는 [z]로 울립니다." },
+      { de:"Er ist mein Onkel.", ipa:"[eːɐ̯ ɪst maɪ̯n ˈɔŋkl̩]", ko:"그는 내 삼촌이야.", tip:"Er은 '에어'. 남자는 er로 가리킵니다." },
+      { de:"Sie ist meine Tante.", ipa:"[ziː ɪst ˈmaɪ̯nə ˈtantə]", ko:"그녀는 내 이모야.", tip:"Sie의 s는 [z]. '지'. 여자는 sie로 가리킵니다." },
+      { de:"Sie sind meine Geschwister.", ipa:"[ziː zɪnt ˈmaɪ̯nə ɡəˈʃvɪstɐ]", ko:"그들은 내 형제자매야.", tip:"복수의 sie도 같은 모양입니다. 동사 sind로 구분합니다." },
+      { de:"Das ist mein Hund Bello!", ipa:"[das ɪst maɪ̯n hʊnt ˈbɛlo]", ko:"이건 내 개 벨로야!", tip:"Hund의 끝 d는 [t]. '훈트'." }
+    ]
+  },
+  {
+    name:"D. 가족에 대해 묻고 답하기",
+    items:[
+      { de:"Wer ist das?", ipa:"[veːɐ̯ ɪst das]", ko:"이 사람은 누구야?", tip:"Wer의 w는 [v]. '웨어'가 아니라 '베어'." },
+      { de:"Ist Jan dein Bruder?", ipa:"[ɪst jan daɪ̯n ˈbʁuːdɐ]", ko:"얀이 네 형제야?", tip:"독일어 j는 [y] 소리. '잔'이 아니라 '얀'. 끝을 올려 주세요." },
+      { de:"Ja, er ist mein Bruder.", ipa:"[jaː eːɐ̯ ɪst maɪ̯n ˈbʁuːdɐ]", ko:"응, 그는 내 형제야.", tip:"Ja도 [야]. a를 길게 끕니다." },
+      { de:"Ist sie deine Schwester?", ipa:"[ɪst ziː ˈdaɪ̯nə ˈʃvɛstɐ]", ko:"그녀가 네 자매야?", tip:"내 것은 meine, 네 것은 deine입니다." },
+      { de:"Nein, sie ist nicht meine Schwester.", ipa:"[naɪ̯n ziː ɪst nɪçt ˈmaɪ̯nə ˈʃvɛstɐ]", ko:"아니, 그녀는 내 자매가 아니야.", tip:"nicht의 ch는 목이 아니라 혀 앞쪽에서 나는 바람 소리입니다." },
+      { de:"Wie heißt dein Bruder?", ipa:"[viː haɪ̯st daɪ̯n ˈbʁuːdɐ]", ko:"네 형제 이름이 뭐야?", tip:"ß는 [s] 하나. '하이스트'." },
+      { de:"Wer sind dann Elfriede und Horst?", ipa:"[veːɐ̯ zɪnt dan ɛlˈfʁiːdə ʊnt hɔʁst]", ko:"그럼 엘프리데와 호르스트는 누구야?", tip:"dann은 '그러면'. a를 짧게 끊습니다." },
+      { de:"Habt ihr Geschwister?", ipa:"[haːpt iːɐ̯ ɡəˈʃvɪstɐ]", ko:"너희는 형제자매가 있어?", tip:"habt의 b는 [p]로 바뀝니다. '합트'. ihr는 '이어'." },
+      { de:"Hat er eine Schwester?", ipa:"[hat eːɐ̯ ˈaɪ̯nə ˈʃvɛstɐ]", ko:"그는 자매가 있어?", tip:"haben의 3인칭은 hat입니다. 끝을 올려 물어봅니다." },
+      { de:"Ja, er hat eine Schwester.", ipa:"[jaː eːɐ̯ hat ˈaɪ̯nə ˈʃvɛstɐ]", ko:"응, 자매가 한 명 있어.", tip:"eine는 '한 명'이라는 뜻도 됩니다." }
+    ]
+  },
+  {
+    name:"E. 혼인 상태와 자녀",
+    items:[
+      { de:"Ich bin ledig.", ipa:"[ɪç bɪn ˈleːdɪç]", ko:"나는 미혼이야.", tip:"끝의 -ig는 [이히]로 읽습니다. '레디그'가 아니라 '레디히'." },
+      { de:"Ich bin verheiratet.", ipa:"[ɪç bɪn fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"나는 결혼했어.", tip:"ver-는 약하게 '페어', ei는 '아이'. '페어하이라테트'." },
+      { de:"Ich bin geschieden.", ipa:"[ɪç bɪn ɡəˈʃiːdn̩]", ko:"나는 이혼했어.", tip:"sch는 [슈], ie는 긴 '이－'. '게시－덴'." },
+      { de:"Bist du ledig?", ipa:"[bɪst duː ˈleːdɪç]", ko:"너 미혼이야?", tip:"du에게 묻는 형태입니다. 끝을 올려 주세요." },
+      { de:"Nein, ich bin nicht ledig.", ipa:"[naɪ̯n ɪç bɪn nɪçt ˈleːdɪç]", ko:"아니, 미혼이 아니야.", tip:"nicht를 동사 뒤에 넣어 부정합니다." },
+      { de:"Sind Sie verheiratet?", ipa:"[zɪnt ziː fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"결혼하셨어요?", tip:"존댓말은 Sie와 sind를 씁니다. 둘 다 s는 [z]." },
+      { de:"Ja, ich bin verheiratet.", ipa:"[jaː ɪç bɪn fɛɐ̯ˈhaɪ̯ʁaːtət]", ko:"네, 결혼했습니다.", tip:"긴 단어라 '페어-하이-라-테트'로 나눠 연습해 보세요." },
+      { de:"Wir haben Kinder.", ipa:"[viːɐ̯ ˈhaːbn̩ ˈkɪndɐ]", ko:"우리는 아이가 있어.", tip:"Wir의 w는 [v]. '비어'. haben의 끝 -en은 약하게." },
+      { de:"Wir haben ein Kind.", ipa:"[viːɐ̯ ˈhaːbn̩ aɪ̯n kɪnt]", ko:"우리는 아이가 한 명 있어.", tip:"Kind의 끝 d는 [t]. '킨트'." },
+      { de:"Wir haben keine Kinder.", ipa:"[viːɐ̯ ˈhaːbn̩ ˈkaɪ̯nə ˈkɪndɐ]", ko:"우리는 아이가 없어.", tip:"keine가 '없다'를 나타냅니다. nicht를 쓰지 않습니다." }
+    ]
+  },
+  {
+    name:"F. 숫자 11–100",
+    items:[
+      { de:"elf", ipa:"[ɛlf]", ko:"11", tip:"짧게 '엘프'. 11만 특별한 모양입니다." },
+      { de:"zwölf", ipa:"[tsvœlf]", ko:"12", tip:"z는 [ts], ö는 입술을 오므린 '에'. '츠뵐프'." },
+      { de:"dreizehn", ipa:"[ˈdʁaɪ̯tseːn]", ko:"13", tip:"13부터 19까지는 숫자 + zehn입니다. '드라이첸'." },
+      { de:"vierzehn", ipa:"[ˈfɪʁtseːn]", ko:"14", tip:"v는 [f]. vier의 i가 짧아집니다. '피어첸'." },
+      { de:"fünfzehn", ipa:"[ˈfʏnftseːn]", ko:"15", tip:"ü는 입술을 오므린 '이'. '퓐프첸'." },
+      { de:"sechzehn", ipa:"[ˈzɛçtseːn]", ko:"16", tip:"sechs의 s가 사라집니다. '젝스첸'이 아니라 '제히첸'." },
+      { de:"siebzehn", ipa:"[ˈziːptseːn]", ko:"17", tip:"sieben의 -en이 사라집니다. '지벤첸'이 아니라 '지프첸'." },
+      { de:"achtzehn", ipa:"[ˈaxtseːn]", ko:"18", tip:"ch는 목 안쪽 소리. '아흐첸'." },
+      { de:"neunzehn", ipa:"[ˈnɔɪ̯ntseːn]", ko:"19", tip:"eu는 '오이'. '노인첸'." },
+      { de:"zwanzig", ipa:"[ˈtsvantsɪç]", ko:"20", tip:"끝의 -ig는 [이히]. '츠반치히'." },
+      { de:"einundzwanzig", ipa:"[ˈaɪ̯n|ʊnt|tsvantsɪç]", ko:"21", tip:"독일어는 뒷자리를 먼저 말합니다. 1 + und + 20. '아인운트츠반치히'." },
+      { de:"achtundzwanzig", ipa:"[ˈaxt|ʊnt|tsvantsɪç]", ko:"28", tip:"8 + und + 20. 한 덩어리로 붙여 읽습니다." },
+      { de:"dreißig", ipa:"[ˈdʁaɪ̯sɪç]", ko:"30", tip:"30만 -zig가 아니라 -ßig입니다. '드라이시히'." },
+      { de:"vierzig", ipa:"[ˈfɪʁtsɪç]", ko:"40", tip:"v는 [f], 끝은 [이히]. '피어치히'." },
+      { de:"fünfzig", ipa:"[ˈfʏnftsɪç]", ko:"50", tip:"'퓐프치히'. ü를 놓치지 않도록 주의하세요." },
+      { de:"sechzig", ipa:"[ˈzɛçtsɪç]", ko:"60", tip:"여기서도 sechs의 s가 빠집니다. '제히치히'." },
+      { de:"siebzig", ipa:"[ˈziːptsɪç]", ko:"70", tip:"sieben의 -en이 빠집니다. '지프치히'." },
+      { de:"achtzig", ipa:"[ˈaxtsɪç]", ko:"80", tip:"'아흐치히'. ch는 목 안쪽에서." },
+      { de:"neunzig", ipa:"[ˈnɔɪ̯ntsɪç]", ko:"90", tip:"'노인치히'." },
+      { de:"hundert", ipa:"[ˈhʊndɐt]", ko:"100", tip:"u를 짧게, 끝의 -ert는 약한 '어트'. '훈더트'." }
+    ]
+  },
+  {
+    name:"G. 나이 묻기",
+    items:[
+      { de:"Wie alt bist du?", ipa:"[viː alt bɪst duː]", ko:"너 몇 살이야?", tip:"alt의 a를 짧게. '비 알트 비스트 두'." },
+      { de:"Ich bin fünfzehn Jahre alt.", ipa:"[ɪç bɪn ˈfʏnftseːn ˈjaːʁə alt]", ko:"나는 15살이야.", tip:"Jahre의 J는 [y]. '자레'가 아니라 '야－레'." },
+      { de:"Wie alt ist dein Bruder?", ipa:"[viː alt ɪst daɪ̯n ˈbʁuːdɐ]", ko:"네 형제는 몇 살이야?", tip:"alt ist를 '알티스트'처럼 붙여 읽으면 자연스럽습니다." },
+      { de:"Er ist zwanzig Jahre alt.", ipa:"[eːɐ̯ ɪst ˈtsvantsɪç ˈjaːʁə alt]", ko:"그는 20살이야.", tip:"zwanzig의 끝은 [이히]입니다." },
+      { de:"Wie alt ist dein Sohn?", ipa:"[viː alt ɪst daɪ̯n zoːn]", ko:"아들은 몇 살이에요?", tip:"Sohn의 s는 [z], o는 길게. '존－'." },
+      { de:"Wie alt sind Sie?", ipa:"[viː alt zɪnt ziː]", ko:"몇 살이세요?", tip:"존댓말로 물을 때는 sind Sie. 둘 다 [z] 소리." }
+    ]
+  }
+  ]
 }
 ];
 
@@ -434,7 +566,11 @@ function say(text, rate){
 }
 
 /* ================= 채점 ================= */
-const DIGITS = {"0":"null","1":"eins","2":"zwei","3":"drei","4":"vier","5":"fünf","6":"sechs","7":"sieben","8":"acht","9":"neun","10":"zehn"};
+const DIGITS = {"0":"null","1":"eins","2":"zwei","3":"drei","4":"vier","5":"fünf","6":"sechs","7":"sieben","8":"acht","9":"neun","10":"zehn",
+"11":"elf","12":"zwölf","13":"dreizehn","14":"vierzehn","15":"fünfzehn","16":"sechzehn","17":"siebzehn","18":"achtzehn","19":"neunzehn","20":"zwanzig",
+"21":"einundzwanzig","22":"zweiundzwanzig","23":"dreiundzwanzig","24":"vierundzwanzig","25":"fünfundzwanzig","26":"sechsundzwanzig",
+"27":"siebenundzwanzig","28":"achtundzwanzig","29":"neunundzwanzig","30":"dreisig","40":"vierzig","50":"fünfzig","60":"sechzig",
+"70":"siebzig","80":"achtzig","90":"neunzig","100":"hundert"};
 function norm(s){
   let t = s.toLowerCase()
     .replace(/[’'´`]/g,"")                       // geht's -> gehts
